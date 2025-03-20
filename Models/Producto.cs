@@ -9,6 +9,8 @@ namespace InventoryFinal.Models
         [Key]
         public int Id { get; set; }
 
+        public byte[]? Imagen { get; set; }
+
         [Required]
         [StringLength(255)]
         public required string Nombre { get; set; }
