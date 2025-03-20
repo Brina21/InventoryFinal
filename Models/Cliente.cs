@@ -17,5 +17,7 @@ namespace InventoryFinal.Models
         public required string Nombre { get; set; }
 
         public int Telefono { get; set; }
+
+
     }
 }
