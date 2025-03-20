@@ -18,6 +18,12 @@ namespace InventoryFinal.Models
 
         public int Telefono { get; set; }
 
+        [Required]
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
+        // Relaciones //
+        public List<Venta>? Ventas { get; set; }
+
+        public List<Compra>? Compras { get; set; }
     }
 }
