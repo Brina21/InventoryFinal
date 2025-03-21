@@ -23,8 +23,8 @@ namespace InventoryFinal.Models
         public int UsuarioId { get; set; }
         public Usuario? Usuario { get; set; }
 
-        public List<MovimientoStock>? MovimientoStock { get; set; }
+        public List<MovimientoStock>? MovimientoStocks { get; set; }
 
-        public List<DetalleCompra>? DetalleCompra { get; set; }
+        public List<DetalleCompra>? DetalleCompras { get; set; }
     }
 }

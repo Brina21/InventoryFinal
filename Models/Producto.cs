@@ -28,14 +28,16 @@ namespace InventoryFinal.Models
         public int StockMinimo { get; set; }
 
         // Relaciones //
-        public int CaregoriaId { get; set; }
+        public int? CategoriaId { get; set; }
         public Categoria? Categoria { get; set; }
 
-        public int ProveedorId { get; set; }
+        public int? ProveedorId { get; set; }
         public Proveedor? Proveedor { get; set; }
 
         public List<DetalleCompra>? DetalleCompras { get; set; }
 
         public List<DetalleVenta>? DetalleVentas { get; set; }
+
+        public List<MovimientoStock>? MovimientoStocks { get; set; }
     }
 }

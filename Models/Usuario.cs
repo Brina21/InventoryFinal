@@ -38,7 +38,7 @@ namespace InventoryFinal.Models
 
         public List<Compra>? Compras { get; set; }
 
-        public List<MovimientoStock>? MovimientoStock { get; set; }
+        public List<MovimientoStock>? MovimientoStocks { get; set; }
     }
 
     public enum Cargo
