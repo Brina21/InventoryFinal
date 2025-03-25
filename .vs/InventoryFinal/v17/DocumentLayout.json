@@ -3,32 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\service\\igenericoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:service\\igenericoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\compracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\compracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\detalleventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\detalleventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\detallecompracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\detallecompracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\movimientostockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\movimientostockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\service\\genericoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:service\\genericoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\repository\\igenericorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:repository\\igenericorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\repository\\genericorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:repository\\genericorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\escribirlogsfichero\\escribirfichero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:escribirlogsfichero\\escribirfichero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,93 +62,167 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T08:57:28.391Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "IGenericoService.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Service\\IGenericoService.cs",
-              "RelativeDocumentMoniker": "Service\\IGenericoService.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Service\\IGenericoService.cs",
-              "RelativeToolTip": "Service\\IGenericoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T09:00:20.6Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "GenericoService.cs",
               "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Service\\GenericoService.cs",
               "RelativeDocumentMoniker": "Service\\GenericoService.cs",
               "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Service\\GenericoService.cs",
               "RelativeToolTip": "Service\\GenericoService.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAowEgAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T07:37:23.471Z",
+              "WhenOpened": "2025-03-25T08:41:01.266Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EscribirFichero.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\EscribirLogsFichero\\EscribirFichero.cs",
-              "RelativeDocumentMoniker": "EscribirLogsFichero\\EscribirFichero.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\EscribirLogsFichero\\EscribirFichero.cs",
-              "RelativeToolTip": "EscribirLogsFichero\\EscribirFichero.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAANAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "CategoriaController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\CategoriaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriaController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\CategoriaController.cs",
+              "RelativeToolTip": "Controllers\\CategoriaController.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAIUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T20:59:48.05Z",
+              "WhenOpened": "2025-03-24T15:11:32.248Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GenericoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\GenericoRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\GenericoRepository.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\GenericoRepository.cs",
-              "RelativeToolTip": "Repository\\GenericoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAgAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "ProveedorController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ProveedorController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProveedorController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ProveedorController.cs",
+              "RelativeToolTip": "Controllers\\ProveedorController.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAswHIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T06:57:50.379Z",
+              "WhenOpened": "2025-03-24T15:11:18.801Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IGenericoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\IGenericoRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\IGenericoRepository.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\IGenericoRepository.cs",
-              "RelativeToolTip": "Repository\\IGenericoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ProductoController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ProductoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductoController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ProductoController.cs",
+              "RelativeToolTip": "Controllers\\ProductoController.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAowIUAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T06:57:42.422Z",
+              "WhenOpened": "2025-03-24T15:11:01.968Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAqwIwAAAAsAAAAAAAAAA==",
+              "Title": "MovimientoStockController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\MovimientoStockController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MovimientoStockController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\MovimientoStockController.cs",
+              "RelativeToolTip": "Controllers\\MovimientoStockController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAA7wAYAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T10:25:55.351Z"
+              "WhenOpened": "2025-03-24T15:10:49.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DetalleCompraController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\DetalleCompraController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DetalleCompraController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\DetalleCompraController.cs",
+              "RelativeToolTip": "Controllers\\DetalleCompraController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:10:30.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DetalleVentaController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\DetalleVentaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DetalleVentaController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\DetalleVentaController.cs",
+              "RelativeToolTip": "Controllers\\DetalleVentaController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:10:16.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CompraController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\CompraController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CompraController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\CompraController.cs",
+              "RelativeToolTip": "Controllers\\CompraController.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAADwv4UAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:09:52.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VentaController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\VentaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\VentaController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\VentaController.cs",
+              "RelativeToolTip": "Controllers\\VentaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:09:35.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "Controllers\\ClienteController.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAADwv3wAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:05:12.534Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "a4b8d3bf-29be-4479-8893-816b74e082c1",
+        "Display": 1,
+        "X": 75,
+        "Y": 134,
+        "Width": 1061,
+        "Height": 585,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAgwHUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T07:20:15.972Z",
+              "EditorCaption": ""
             }
           ]
         }

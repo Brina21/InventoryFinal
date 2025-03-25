@@ -13,7 +13,7 @@ namespace InventoryFinal.Service
             this.genericoRepository = genericoRepository;
         }
 
-        public async Task<(bool exito, string mensaje)> Crear(T entidad)
+        public async Task<(bool exito, string mensaje, T? resultado)> Crear(T entidad)
         {
             T? entidadResultado = await genericoRepository.Insert(entidad);
 
@@ -21,11 +21,11 @@ namespace InventoryFinal.Service
             {
                 EscribirFichero.Escribir($"{typeof(T).Name} creada correctamente.");
 
-                return (true, $"{typeof(T).Name} creada correctamente.");
+                return (true, $"{typeof(T).Name} creada correctamente.", entidadResultado);
             }
 
             EscribirFichero.Escribir($"Error al crear: {typeof(T).Name}.");
-            return (false, $"Error al crear: {typeof(T).Name}.");
+            return (false, $"Error al crear: {typeof(T).Name}.", null);
         }
 
         public async Task<(bool exito, string mensaje, T? resultado)> ObtenerPorId(int id)
@@ -60,7 +60,7 @@ namespace InventoryFinal.Service
         {
             bool resultado = await genericoRepository.Update(entidad);
 
-            if (resultado == true)
+            if (resultado)
             {
                 EscribirFichero.Escribir($"{typeof(T).Name} actualizada correctamente.");
                 return (true, $"{typeof(T).Name} actualizada correctamente.");
@@ -74,7 +74,7 @@ namespace InventoryFinal.Service
         {
             bool resultado = await genericoRepository.Delete(id);
 
-            if (resultado == true)
+            if (resultado)
             {
                 EscribirFichero.Escribir($"{typeof(T).Name} eliminada correctamente.");
                 return (true, $"{typeof(T).Name} eliminada correctamente.");
