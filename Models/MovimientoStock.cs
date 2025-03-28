@@ -22,10 +22,10 @@ namespace InventoryFinal.Models
         public int ProductoId { get; set; }
         public Producto? Producto { get; set; }
 
-        public int VentaId { get; set; }
+        public int? VentaId { get; set; }
         public Venta? Venta { get; set; }
 
-        public int CompraId { get; set; }
+        public int? CompraId { get; set; }
         public Compra? Compra { get; set; }
 
         public int? UsuarioId { get; set; }

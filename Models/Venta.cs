@@ -17,7 +17,7 @@ namespace InventoryFinal.Models
         public decimal Total { get; set; }
 
         // Relaciones //
-        public int ClienteId { get; set; }
+        public int? ClienteId { get; set; }
         public Cliente? Cliente { get; set; }
 
         public int UsuarioId { get; set; }

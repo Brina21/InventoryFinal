@@ -80,7 +80,7 @@ namespace InventoryFinal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaCompra")
@@ -176,7 +176,7 @@ namespace InventoryFinal.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
 
-                    b.Property<int>("CompraId")
+                    b.Property<int?>("CompraId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaMovimiento")
@@ -191,7 +191,7 @@ namespace InventoryFinal.Migrations
                     b.Property<int?>("UsuarioId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VentaId")
+                    b.Property<int?>("VentaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -328,7 +328,7 @@ namespace InventoryFinal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaVenta")
@@ -354,8 +354,7 @@ namespace InventoryFinal.Migrations
                     b.HasOne("InventoryFinal.Models.Cliente", "Cliente")
                         .WithMany("Compras")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("InventoryFinal.Models.Usuario", "Usuario")
                         .WithMany("Compras")
@@ -411,8 +410,7 @@ namespace InventoryFinal.Migrations
                     b.HasOne("InventoryFinal.Models.Compra", "Compra")
                         .WithMany("MovimientoStocks")
                         .HasForeignKey("CompraId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("InventoryFinal.Models.Producto", "Producto")
                         .WithMany("MovimientoStocks")
@@ -428,8 +426,7 @@ namespace InventoryFinal.Migrations
                     b.HasOne("InventoryFinal.Models.Venta", "Venta")
                         .WithMany("MovimientoStocks")
                         .HasForeignKey("VentaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Compra");
 
@@ -461,8 +458,7 @@ namespace InventoryFinal.Migrations
                     b.HasOne("InventoryFinal.Models.Cliente", "Cliente")
                         .WithMany("Ventas")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("InventoryFinal.Models.Usuario", "Usuario")
                         .WithMany("Ventas")

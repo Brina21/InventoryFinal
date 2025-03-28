@@ -115,7 +115,7 @@ namespace InventoryFinal.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FechaCompra = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Total = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: true),
                     UsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -143,7 +143,7 @@ namespace InventoryFinal.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FechaVenta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Total = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: true),
                     UsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -231,8 +231,8 @@ namespace InventoryFinal.Migrations
                     TipoMovimiento = table.Column<int>(type: "int", nullable: false),
                     FechaMovimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProductoId = table.Column<int>(type: "int", nullable: false),
-                    VentaId = table.Column<int>(type: "int", nullable: false),
-                    CompraId = table.Column<int>(type: "int", nullable: false),
+                    VentaId = table.Column<int>(type: "int", nullable: true),
+                    CompraId = table.Column<int>(type: "int", nullable: true),
                     UsuarioId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

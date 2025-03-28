@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<InventoryFinal.Models.Usuario>
 
 @{
-    ViewData["Title"] = "ListaUsuarios";
+    ViewData["Title"] = "Index";
 }
 
-<h1>ListaUsuarios</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Crear">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.FechaCreacion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Editar" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Detalles" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Eliminar" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

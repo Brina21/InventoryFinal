@@ -1,0 +1,72 @@
+﻿@page "/login"
+@model Inventory.Views.Session.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-wrap items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div class="bg-white p-8 rounded-3xl shadow-2xl w-full sm:max-w-sm md:max-w-md lg:max-w-lg border border-gray-200">
+
+        <h2 class="text-3xl font-bold text-center text-gray-800">¡Hola! 👋</h2>
+        <p class="text-center text-gray-600">Nos alegra verte de nuevo</p>
+
+        <div class="bg-purple-100 p-4 rounded-xl text-center mt-4 shadow-md">
+            <p class="font-semibold text-purple-700">Iniciar sesión</p>
+            <p class="text-gray-500 text-sm">Ingresa tus datos a continuación</p>
+        </div>
+
+        <form method="post" class="mt-6">
+            <label class="block font-medium text-gray-700">Correo electrónico</label>
+            <div class="relative mt-1">
+                <input type="email" name="Email" class="w-full p-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-purple-500 shadow-sm sm:text-base" placeholder="Ingresa tu correo electrónico">
+                <span class="absolute top-1/2 right-4 -translate-y-1/2 flex items-center text-gray-400" style="font-size: x-large">
+                    <i class="bi bi-person-fill"></i>
+                </span>
+            </div>
+
+            <label class="block mt-4 font-medium text-gray-700">Contraseña</label>
+            <div class="relative mt-1">
+                <input type="password" name="Password" id="passwordField" class="w-full p-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-purple-500 shadow-sm sm:text-base" placeholder="Ingresa tu contraseña">
+                <button type="button" id="togglePassword" class="absolute top-1/2 right-4 -translate-y-1/2 flex items-center text-gray-400">
+                    <span id="passwordIcon" style="font-size: x-large">🙈</span>
+                </button>
+            </div>
+
+            <script>
+                document.getElementById('togglePassword').addEventListener('click', function () {
+                    const passwordField = document.getElementById('passwordField');
+                    const passwordIcon = document.getElementById('passwordIcon');
+
+                    // Alternar entre tipo "password" y "text"
+                    if (passwordField.type === 'password') {
+                        passwordField.type = 'text';
+                        passwordIcon.textContent = '🙉';
+                    } else {
+                        passwordField.type = 'password';
+                        passwordIcon.textContent = '🙈';
+                    }
+                });
+            </script>
+
+            <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white text-lg p-4 rounded-lg mt-4 hover:from-purple-600 hover:to-purple-800 transition shadow-lg">
+                ✨ Iniciar sesión ✨
+            </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-600 mt-4">
+            ¿Eres nuevo aquí? <a href="@Url.Action("Register", "Session")" class="text-purple-600 font-medium"> Regístrate 🚀</a>
+        </p>
+    </div>
+</body>
+</html>

@@ -25,7 +25,7 @@ namespace InventoryFinal.Controllers
                 return View(new List<Producto>());
             }
 
-            return View();
+            return View(productos);
         }
 
         [HttpGet]
