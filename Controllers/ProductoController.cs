@@ -1,22 +1,30 @@
 ﻿using InventoryFinal.Models;
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
 
 namespace InventoryFinal.Controllers
 {
     public class ProductoController : Controller
     {
-        private readonly GenericoService<Producto> genericoService;
+        private readonly GenericoService<Producto> productoGenericoService;
+        private readonly GenericoService<Categoria> categoriaService;
+        private readonly GenericoService<Proveedor> proveedorService;
+        private readonly ProductoService productoService;
 
-        public ProductoController(GenericoService<Producto> genericoService)
+        public ProductoController(GenericoService<Producto> productoGenericoService, ProductoService productoService, GenericoService<Categoria> categoriaService, GenericoService<Proveedor> proveedorService)
         {
-            this.genericoService = genericoService;
+            this.productoGenericoService = productoGenericoService;
+            this.productoService = productoService;
+            this.categoriaService = categoriaService;
+            this.proveedorService = proveedorService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var (exito, mensaje, productos) = await genericoService.ObtenerTodos();
+            var (exito, mensaje, productos) = await productoService.ObtenerTodosProductos();
 
             if (!exito)
             {
@@ -31,7 +39,7 @@ namespace InventoryFinal.Controllers
         [HttpGet]
         public async Task<IActionResult> Detalles(int id)
         {
-            var (exito, mensaje, producto) = await genericoService.ObtenerPorId(id);
+            var (exito, mensaje, producto) = await productoService.ObtenerProductoPorId(id);
 
             if (!exito)
             {
@@ -42,8 +50,29 @@ namespace InventoryFinal.Controllers
         }
 
         [HttpGet]
-        public IActionResult Crear()
+        public async Task<IActionResult> Crear()
         {
+            // Obtener todas las Categorias
+            var (exitoC, mensajeC, categorias) = await categoriaService.ObtenerTodos();
+            if (!exitoC)
+            {
+                TempData["Error"] = mensajeC;
+                return View();
+            }
+            // SelectList de Categorias para el dropdown (valor = Id, texto = Nombre)
+            ViewBag.Categorias = new SelectList(categorias, "Id", "Nombre");
+
+            // Obtener todos los Proveedores
+            var (exitoP, mensajeP, proveedores) = await proveedorService.ObtenerTodos();
+            if (!exitoP)
+            {
+                TempData["Error"] = mensajeP;
+                return View();
+            }
+            // SelectList de Proveedores para el dropdown (valor = Id, texto = Nombre)
+            ViewBag.Proveedores = new SelectList(proveedores, "Id", "Nombre");
+
+
             return View();
         }
 
@@ -56,7 +85,7 @@ namespace InventoryFinal.Controllers
                 return View(producto);
             }
 
-            var (exito, mensaje, nuevoProducto) = await genericoService.Crear(producto);
+            var (exito, mensaje, nuevoProducto) = await productoService.Crear(producto);
 
             if (!exito)
             {
@@ -71,7 +100,30 @@ namespace InventoryFinal.Controllers
         [HttpGet]
         public async Task<IActionResult> Editar(int id)
         {
-            var (exito, mensaje, producto) = await genericoService.ObtenerPorId(id);
+            // Obtener todas las Categorias
+            var (exitoC, mensajeC, categorias) = await categoriaService.ObtenerTodos();
+            if (!exitoC)
+            {
+                TempData["Error"] = mensajeC;
+                return View();
+            }
+
+            // SelectList de Categorias para el dropdown (valor = Id, texto = Nombre)
+            ViewBag.Categorias = new SelectList(categorias, "Id", "Nombre");
+
+            // Obtener todos los Proveedores
+            var (exitoP, mensajeP, proveedores) = await proveedorService.ObtenerTodos();
+            if (!exitoP)
+            {
+                TempData["Error"] = mensajeP;
+                return View();
+            }
+
+            // SelectList de Proveedores para el dropdown (valor = Id, texto = Nombre)
+            ViewBag.Proveedores = new SelectList(proveedores, "Id", "Nombre");
+
+
+            var (exito, mensaje, producto) = await productoService.ObtenerPorId(id);
 
             if (!exito)
             {
@@ -95,7 +147,7 @@ namespace InventoryFinal.Controllers
                 return View(producto);
             }
 
-            var (exito, mensaje) = await genericoService.Actualizar(producto);
+            var (exito, mensaje) = await productoService.Actualizar(producto);
 
             if (!exito)
             {
@@ -110,7 +162,7 @@ namespace InventoryFinal.Controllers
         [HttpGet]
         public async Task<IActionResult> Eliminar(int id)
         {
-            var (exito, mensaje, producto) = await genericoService.ObtenerPorId(id);
+            var (exito, mensaje, producto) = await productoService.ObtenerProductoPorId(id);
 
             if (!exito)
             {
@@ -124,7 +176,7 @@ namespace InventoryFinal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
-            var (exito, mensaje) = await genericoService.Eliminar(id);
+            var (exito, mensaje) = await productoService.Eliminar(id);
 
             if (!exito)
             {

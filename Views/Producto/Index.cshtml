@@ -1,14 +1,8 @@
 ﻿@model IEnumerable<InventoryFinal.Models.Producto>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<h1>Lista Productos</h1>
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Crear">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -26,15 +20,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StockMinimo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Proveedor)
             </th>
             <th></th>
         </tr>
@@ -63,20 +48,15 @@
                     @Html.DisplayFor(modelItem => item.Stock)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StockMinimo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Categoria.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Proveedor.Contacto)
-                </td>
-                <td>
-                    <a asp-action="Editar" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Detalle" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Eliminar" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Detalles" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Crear">Nuevo</a>
+</p>

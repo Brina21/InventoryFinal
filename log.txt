@@ -72,3 +72,119 @@
  29/03/2025 0:21:29 -> Entidades de Compra obtenidas correctamente.
  29/03/2025 0:21:31 -> Entidades de Producto obtenidas correctamente.
  29/03/2025 0:22:17 -> Entidades de Producto obtenidas correctamente.
+ 31/03/2025 8:18:33 -> Entidades de Producto obtenidas correctamente.
+ 31/03/2025 8:19:55 -> Entidades de Producto obtenidas correctamente.
+ 31/03/2025 8:44:55 -> Productos obtenidos correctamente
+ 31/03/2025 8:45:06 -> Producto obtenida correctamente.
+ 31/03/2025 8:56:02 -> Productos obtenidos correctamente
+ 31/03/2025 8:57:46 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 8:57:52 -> Productos obtenidos correctamente
+ 31/03/2025 8:57:53 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 8:59:03 -> Productos obtenidos correctamente
+ 31/03/2025 8:59:05 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 8:59:05 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 8:59:12 -> Productos obtenidos correctamente
+ 31/03/2025 8:59:18 -> Producto obtenida correctamente.
+ 31/03/2025 9:04:34 -> Productos obtenidos correctamente
+ 31/03/2025 9:04:37 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:04:37 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:05:05 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:05:05 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:05:15 -> Productos obtenidos correctamente
+ 31/03/2025 9:05:28 -> Productos obtenidos correctamente
+ 31/03/2025 9:05:30 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:06:11 -> Productos obtenidos correctamente
+ 31/03/2025 9:06:11 -> Productos obtenidos correctamente
+ 31/03/2025 9:06:13 -> Producto obtenida correctamente.
+ 31/03/2025 9:06:17 -> Productos obtenidos correctamente
+ 31/03/2025 9:06:53 -> Productos obtenidos correctamente
+ 31/03/2025 9:06:59 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:06:59 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:06:59 -> Producto obtenida correctamente.
+ 31/03/2025 9:07:11 -> Productos obtenidos correctamente
+ 31/03/2025 9:07:13 -> Se ha encontrado Aceite Sintético Racing.
+ 31/03/2025 9:07:16 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:07:16 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:07:16 -> Producto obtenida correctamente.
+ 31/03/2025 9:07:18 -> Productos obtenidos correctamente
+ 31/03/2025 9:08:55 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:08:55 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:08:55 -> Producto obtenida correctamente.
+ 31/03/2025 9:08:59 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:09:04 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:09:42 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:09:47 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:10:03 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:10:31 -> Productos obtenidos correctamente
+ 31/03/2025 9:10:41 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:10:43 -> Productos obtenidos correctamente
+ 31/03/2025 9:10:45 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:10:45 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:10:45 -> Producto obtenida correctamente.
+ 31/03/2025 9:10:48 -> Productos obtenidos correctamente
+ 31/03/2025 9:11:15 -> Productos obtenidos correctamente
+ 31/03/2025 9:11:23 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:11:35 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:12:10 -> Productos obtenidos correctamente
+ 31/03/2025 9:12:13 -> Entidades de Compra obtenidas correctamente.
+ 31/03/2025 9:12:15 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:12:18 -> Entidades de Compra obtenidas correctamente.
+ 31/03/2025 9:12:19 -> Entidades de Venta obtenidas correctamente.
+ 31/03/2025 9:12:21 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:12:24 -> Entidades de Usuario obtenidas correctamente.
+ 31/03/2025 9:12:42 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:12:45 -> Productos obtenidos correctamente
+ 31/03/2025 9:13:17 -> Productos obtenidos correctamente
+ 31/03/2025 9:13:40 -> Productos obtenidos correctamente
+ 31/03/2025 9:13:46 -> Productos obtenidos correctamente
+ 31/03/2025 9:14:01 -> Productos obtenidos correctamente
+ 31/03/2025 9:14:20 -> Productos obtenidos correctamente
+ 31/03/2025 9:14:36 -> Productos obtenidos correctamente
+ 31/03/2025 9:15:29 -> Productos obtenidos correctamente
+ 31/03/2025 9:15:34 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:15:59 -> Productos obtenidos correctamente
+ 31/03/2025 9:16:18 -> Producto obtenida correctamente.
+ 31/03/2025 9:16:41 -> Producto obtenida correctamente.
+ 31/03/2025 9:16:51 -> Producto obtenida correctamente.
+ 31/03/2025 9:16:59 -> Producto obtenida correctamente.
+ 31/03/2025 9:17:08 -> Producto obtenida correctamente.
+ 31/03/2025 9:17:51 -> Producto obtenida correctamente.
+ 31/03/2025 9:18:04 -> Producto obtenida correctamente.
+ 31/03/2025 9:18:52 -> Producto obtenida correctamente.
+ 31/03/2025 9:19:40 -> Productos obtenidos correctamente
+ 31/03/2025 9:19:42 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:20:13 -> Productos obtenidos correctamente
+ 31/03/2025 9:20:15 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:20:15 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:20:15 -> Producto obtenida correctamente.
+ 31/03/2025 9:20:36 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:20:36 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:20:36 -> Producto obtenida correctamente.
+ 31/03/2025 9:20:46 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:20:46 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:20:46 -> Producto obtenida correctamente.
+ 31/03/2025 9:20:47 -> Productos obtenidos correctamente
+ 31/03/2025 9:20:48 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:20:50 -> Productos obtenidos correctamente
+ 31/03/2025 9:20:51 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:20:51 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:20:51 -> Producto obtenida correctamente.
+ 31/03/2025 9:21:22 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:21:22 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:21:22 -> Producto obtenida correctamente.
+ 31/03/2025 9:21:42 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:21:42 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:21:42 -> Producto obtenida correctamente.
+ 31/03/2025 9:21:46 -> Productos obtenidos correctamente
+ 31/03/2025 9:21:48 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:22:07 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:22:24 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:22:43 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:22:59 -> Se ha encontrado Kit de NOS.
+ 31/03/2025 9:24:57 -> Productos obtenidos correctamente
+ 31/03/2025 9:24:58 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:24:58 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:25:18 -> Entidades de Categoria obtenidas correctamente.
+ 31/03/2025 9:25:18 -> Entidades de Proveedor obtenidas correctamente.
+ 31/03/2025 9:25:27 -> Productos obtenidos correctamente
+ 31/03/2025 9:26:34 -> Productos obtenidos correctamente

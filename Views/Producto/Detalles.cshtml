@@ -1,9 +1,5 @@
 ﻿@model InventoryFinal.Models.Producto
 
-@{
-    ViewData["Title"] = "Detalles";
-}
-
 <h1>Detalles</h1>
 
 <div>
@@ -56,11 +52,11 @@
             @Html.DisplayNameFor(model => model.Proveedor)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Proveedor.Contacto)
+            @Html.DisplayFor(model => model.Proveedor.Nombre)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Editar" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Editar" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="Index">Volver a Lista</a>
 </div>

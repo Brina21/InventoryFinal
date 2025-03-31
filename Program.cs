@@ -10,6 +10,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped(typeof(IGenericoRepository<>), typeof(GenericoRepository<>));
 builder.Services.AddScoped(typeof(GenericoService<>));
+builder.Services.AddScoped(typeof(ProductoRepository));
+builder.Services.AddScoped(typeof(ProductoService));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
