@@ -6,16 +6,16 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace InventoryFinal.Service
 {
-    public class ProductoService : GenericoService<Producto>
+    public class ProductoService
     {
         private readonly ProductoRepository productoRepository;
 
-        public ProductoService(ProductoRepository repository) : base(repository)
+        public ProductoService(ProductoRepository repository)
         {
             productoRepository = repository;
         }
 
-        public async Task<(bool, string mensaje, Producto? producto)> ObtenerProductoPorId(int id)
+        public async Task<(bool exito, string mensaje, Producto? producto)> ObtenerProductoPorId(int id)
         {
             var entidad = await productoRepository.GetByProductId(id);
 
@@ -31,14 +31,14 @@ namespace InventoryFinal.Service
 
         public async Task<(bool exito, string mensaje, List<Producto> productos)> ObtenerTodosProductos()
         {
-            List<Producto> entidades = await productoRepository.GetAllProductos();
+            List<Producto> resultado = await productoRepository.GetAllProductos();
 
-            if (!entidades.IsNullOrEmpty())
+            if (!resultado.IsNullOrEmpty())
             {
-                EscribirFichero.Escribir("Productos obtenidos correctamente");
-                return (true, "Productos obtenidos correctamente", entidades);
+                return (true, "Productos obtenidos correctamente", resultado);
             }
 
+            EscribirFichero.Escribir("No se han obtenido los productos");
             return (false, "No se encontraron productos", new List<Producto>());
         }
     }

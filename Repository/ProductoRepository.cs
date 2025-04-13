@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InventoryFinal.Repository
 {
-    public class ProductoRepository : GenericoRepository<Producto>
+    public class ProductoRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductoRepository(ApplicationDbContext context) : base(context)
+        public ProductoRepository(ApplicationDbContext context)
         {
             _context = context;
         }

@@ -8,14 +8,14 @@ namespace InventoryFinal.Controllers
 {
     public class ProductoController : Controller
     {
-        private readonly GenericoService<Producto> productoGenericoService;
+        private readonly GenericoService<Producto> genericoService;
         private readonly GenericoService<Categoria> categoriaService;
         private readonly GenericoService<Proveedor> proveedorService;
         private readonly ProductoService productoService;
 
-        public ProductoController(GenericoService<Producto> productoGenericoService, ProductoService productoService, GenericoService<Categoria> categoriaService, GenericoService<Proveedor> proveedorService)
+        public ProductoController(GenericoService<Producto> genericoService, ProductoService productoService, GenericoService<Categoria> categoriaService, GenericoService<Proveedor> proveedorService)
         {
-            this.productoGenericoService = productoGenericoService;
+            this.genericoService = genericoService;
             this.productoService = productoService;
             this.categoriaService = categoriaService;
             this.proveedorService = proveedorService;
@@ -85,7 +85,7 @@ namespace InventoryFinal.Controllers
                 return View(producto);
             }
 
-            var (exito, mensaje, nuevoProducto) = await productoService.Crear(producto);
+            var (exito, mensaje, nuevoProducto) = await genericoService.Crear(producto);
 
             if (!exito)
             {
@@ -123,7 +123,7 @@ namespace InventoryFinal.Controllers
             ViewBag.Proveedores = new SelectList(proveedores, "Id", "Nombre");
 
 
-            var (exito, mensaje, producto) = await productoService.ObtenerPorId(id);
+            var (exito, mensaje, producto) = await productoService.ObtenerProductoPorId(id);
 
             if (!exito)
             {
@@ -147,7 +147,7 @@ namespace InventoryFinal.Controllers
                 return View(producto);
             }
 
-            var (exito, mensaje) = await productoService.Actualizar(producto);
+            var (exito, mensaje) = await genericoService.Actualizar(producto);
 
             if (!exito)
             {
@@ -176,7 +176,7 @@ namespace InventoryFinal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
-            var (exito, mensaje) = await productoService.Eliminar(id);
+            var (exito, mensaje) = await genericoService.Eliminar(id);
 
             if (!exito)
             {
