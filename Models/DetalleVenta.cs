@@ -13,11 +13,13 @@ namespace InventoryFinal.Models
         public int Cantidad { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(10,2)")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser mayor a 0.")]
+        [DataType(DataType.Currency)]
         public decimal PrecioUnitario { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(10, 2)")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser mayor a 0.")]
+        [DataType(DataType.Currency)]
         public decimal Total { get; set; }
 
         // Relaciones //

@@ -3,56 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\views\\detallecompra\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:views\\detallecompra\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\views\\detallecompra\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:views\\detallecompra\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\dto\\crearcompradto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:dto\\crearcompradto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\repository\\genericorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:repository\\genericorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\repository\\comprarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:repository\\comprarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\dto\\compracondetallesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:dto\\compracondetallesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\views\\venta\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:views\\venta\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\views\\venta\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:views\\venta\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\service\\ventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:service\\ventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\repository\\ventarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:repository\\ventarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\models\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:models\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|c:\\users\\sabri\\onedrive\\escritorio\\tfg 2\u00BA\\inventoryfinal\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{509318A4-AAAA-4CBA-B46A-7534E8B885A2}|InventoryFinal.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,17 +34,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAAAJEAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAAAJoAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-28T08:36:55.297Z",
               "IsPinned": true,
@@ -80,155 +52,73 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T06:17:00.08Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Detalles.cshtml",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\DetalleCompra\\Detalles.cshtml",
+              "RelativeDocumentMoniker": "Views\\DetalleCompra\\Detalles.cshtml",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\DetalleCompra\\Detalles.cshtml",
+              "RelativeToolTip": "Views\\DetalleCompra\\Detalles.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-16T15:09:57.582Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ClienteController.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ClienteController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\ClienteController.cs",
-              "RelativeToolTip": "Controllers\\ClienteController.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAQwHcAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-11T10:17:38.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CompraRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\CompraRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\CompraRepository.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\CompraRepository.cs",
-              "RelativeToolTip": "Repository\\CompraRepository.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T10:59:50.522Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GenericoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\GenericoRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\GenericoRepository.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\GenericoRepository.cs",
-              "RelativeToolTip": "Repository\\GenericoRepository.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAAACUAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T10:59:39.594Z",
+              "Title": "Crear.cshtml",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\DetalleCompra\\Crear.cshtml",
+              "RelativeDocumentMoniker": "Views\\DetalleCompra\\Crear.cshtml",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\DetalleCompra\\Crear.cshtml",
+              "RelativeToolTip": "Views\\DetalleCompra\\Crear.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-16T15:09:29.77Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-03T08:01:18.014Z",
+              "Title": "CrearCompraDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\DTO\\CrearCompraDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\CrearCompraDTO.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\DTO\\CrearCompraDTO.cs",
+              "RelativeToolTip": "DTO\\CrearCompraDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T15:05:49.298Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "CompraConDetallesDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\DTO\\CompraConDetallesDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\CompraConDetallesDTO.cs",
+              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\DTO\\CompraConDetallesDTO.cs",
+              "RelativeToolTip": "DTO\\CompraConDetallesDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA8wBAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T08:01:06.877Z"
+              "WhenOpened": "2025-04-16T14:50:35.386Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Crear.cshtml",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\Venta\\Crear.cshtml",
-              "RelativeDocumentMoniker": "Views\\Venta\\Crear.cshtml",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\Venta\\Crear.cshtml",
-              "RelativeToolTip": "Views\\Venta\\Crear.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-01T09:32:19.82Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Editar.cshtml",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\Venta\\Editar.cshtml",
-              "RelativeDocumentMoniker": "Views\\Venta\\Editar.cshtml",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Views\\Venta\\Editar.cshtml",
-              "RelativeToolTip": "Views\\Venta\\Editar.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-01T09:32:15.315Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "VentaController.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\VentaController.cs",
-              "RelativeDocumentMoniker": "Controllers\\VentaController.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Controllers\\VentaController.cs",
-              "RelativeToolTip": "Controllers\\VentaController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAYwKcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T08:24:31.37Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "VentaService.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Service\\VentaService.cs",
-              "RelativeDocumentMoniker": "Service\\VentaService.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Service\\VentaService.cs",
-              "RelativeToolTip": "Service\\VentaService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCcAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T08:26:00.179Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "VentaRepository.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\VentaRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\VentaRepository.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Repository\\VentaRepository.cs",
-              "RelativeToolTip": "Repository\\VentaRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T08:25:52.304Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Venta.cs",
-              "DocumentMoniker": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Models\\Venta.cs",
-              "RelativeDocumentMoniker": "Models\\Venta.cs",
-              "ToolTip": "C:\\Users\\sabri\\OneDrive\\Escritorio\\TFG 2\u00BA\\InventoryFinal\\Models\\Venta.cs",
-              "RelativeToolTip": "Models\\Venta.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T08:24:26.422Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             }
           ]
         }

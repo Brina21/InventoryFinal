@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<InventoryFinal.Models.Producto>
 
 <h1>Lista Productos</h1>
-
-
 <table class="table">
     <thead>
         <tr>
@@ -25,10 +23,6 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model == null)
-        {
-            <p>No se han encontrado productos</p>
-        }
         @foreach (var item in Model)
         {
             <tr>
