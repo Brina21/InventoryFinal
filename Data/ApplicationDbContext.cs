@@ -137,6 +137,34 @@ namespace InventoryFinal.Data
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
+            // Ajuste decimal //
+            modelBuilder.Entity<Compra>()
+                .Property(c => c.Total)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<DetalleCompra>()
+                .Property(dc => dc.PrecioUnitario)
+                .HasPrecision(18, 2);
+            modelBuilder.Entity<DetalleCompra>()
+                .Property(dc => dc.Total)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<DetalleVenta>()
+                .Property(dv => dv.PrecioUnitario)
+                .HasPrecision(18, 2);
+            modelBuilder.Entity<DetalleVenta>()
+                .Property(dv => dv.Total)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Producto>()
+                .Property(p => p.Precio)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Venta>()
+                .Property(v => v.Total)
+                .HasPrecision(18, 2);
+            // ------------- //
+
             // Nombre único //
             modelBuilder.Entity<Categoria>()
                 .HasIndex(c => c.Nombre)

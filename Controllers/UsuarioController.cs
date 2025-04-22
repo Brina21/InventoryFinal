@@ -137,7 +137,7 @@ namespace InventoryFinal.Controllers
             return RedirectToAction("Views/Administrador/Usuario/Index.cshtml");
         }
 
-        /*
+        
         // GET: Usuario/Login
         [HttpGet]
         public IActionResult Login()
@@ -145,10 +145,11 @@ namespace InventoryFinal.Controllers
             return View();
         }
 
+        /*
         // POST: Usuario/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(string nombre, string contraseña)
+        public async Task<IActionResult> Login(string nombre, string contrasenya)
         {
             var (exito, mensaje, usuarios) = await genericoService.ObtenerTodos();
 
@@ -158,7 +159,7 @@ namespace InventoryFinal.Controllers
                 return View();
             }
 
-            var usuario = usuarios.FirstOrDefault(u => u.Nombre == nombre && u.Contraseña == contraseña);
+            var usuario = usuarios.FirstOrDefault(u => u.Nombre == nombre && u.Contrasenya == contrasenya);
 
             if (usuario == null)
             {
@@ -169,12 +170,12 @@ namespace InventoryFinal.Controllers
             // Guardar usuario en sesión
             HttpContext.Session.SetInt32("UsuarioId", usuario.Id);
             HttpContext.Session.SetString("UsuarioNombre", usuario.Nombre);
-            HttpContext.Session.SetString("UsuarioRol", usuario.Cargo.ToString());
+            HttpContext.Session.SetString("UsuarioRol", usuario.Rol.ToString());
 
             // Redirigir por rol
-            if (usuario.Cargo == Cargo.Admin)
+            if (usuario.Rol == Cargo.Administrador)
             {
-                return RedirectToAction("Index", "Administrador");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -191,6 +192,5 @@ namespace InventoryFinal.Controllers
             return RedirectToAction("Login");
         }
         */
-
     }
 }
