@@ -15,7 +15,19 @@ namespace InventoryFinal.Models
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser mayor a 0.")]
         [DataType(DataType.Currency)]
-        public decimal Total { get; set; }
+        public decimal Total { get; private set; }
+
+        public void CalcularTotal()
+        {
+            if (DetalleCompras != null)
+            {
+                Total = DetalleCompras.Sum(dc => dc.Total);
+            }
+            else
+            {
+                Total = 0;
+            }
+        }
 
         // Relaciones //
         public int? ClienteId { get; set; }

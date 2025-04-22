@@ -22,10 +22,10 @@ namespace InventoryFinal.Controllers
             {
                 TempData["Error"] = mensaje;
 
-                return View(new List<Proveedor>());
+                return View("Views/Administrador/Proveedor/Index.cshtml", new List<Proveedor>());
             }
 
-            return View(proveedores);
+            return View("Views/Administrador/Proveedor/Index.cshtml", proveedores);
         }
 
         [HttpGet]
@@ -38,13 +38,13 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(proveedor);
+            return View("Views/Administrador/Proveedor/Detalles.cshtml", proveedor);
         }
 
         [HttpGet]
         public IActionResult Crear()
         {
-            return View();
+            return View("Views/Administrador/Proveedor/Crear.cshtml");
         }
 
         [HttpPost]
@@ -53,7 +53,7 @@ namespace InventoryFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(proveedor);
+                return View("Views/Administrador/Proveedor/Crear.cshtml", proveedor);
             }
 
             var (exito, mensaje, nuevoProveedor) = await genericoService.Crear(proveedor);
@@ -62,10 +62,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(proveedor);
+                return View("Views/Administrador/Proveedor/Crear.cshtml", proveedor);
             }
 
-            return RedirectToAction("Detalles", new { id = nuevoProveedor.Id });
+            return RedirectToAction("Views/Administrador/Proveedor/Detalles.cshtml", new { id = nuevoProveedor.Id });
         }
 
         [HttpGet]
@@ -78,7 +78,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(proveedor);
+            return View("Views/Administrador/Proveedor/Editar.cshtml", proveedor);
         }
 
         [HttpPost]
@@ -92,7 +92,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(proveedor);
+                return View("Views/Administrador/Proveedor/Editar.cshtml", proveedor);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(proveedor);
@@ -101,10 +101,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(proveedor);
+                return View("Views/Administrador/Proveedor/Editar.cshtml", proveedor);
             }
 
-            return RedirectToAction("Detalles", new { id = proveedor.Id });
+            return RedirectToAction("Views/Administrador/Proveedor/Detalles.cshtml", new { id = proveedor.Id });
         }
 
         [HttpGet]
@@ -117,7 +117,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(proveedor);
+            return View("Views/Administrador/Proveedor/Eliminar.cshtml", proveedor);
         }
 
         [HttpPost]
@@ -131,7 +131,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/Administrador/Proveedor/Index.cshtml");
         }
     }
 }

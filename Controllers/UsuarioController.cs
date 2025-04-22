@@ -22,10 +22,10 @@ namespace InventoryFinal.Controllers
             {
                 TempData["Error"] = mensaje;
                 // Muestra lista vacía
-                return View(new List<Usuario>());
+                return View("Views/Administrador/Usuario/Index.cshtml", new List<Usuario>());
             }
 
-            return View(usuarios);
+            return View("Views/Administrador/Usuario/Index.cshtml", usuarios);
         }
 
         [HttpGet]
@@ -39,13 +39,13 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(usuario);
+            return View("Views/Administrador/Usuario/Detalles.cshtml", usuario);
         }
 
         [HttpGet]
         public IActionResult Crear()
         {
-            return View();
+            return View("Views/Administrador/Usuario/Crear.cshtml");
         }
 
         [HttpPost]
@@ -54,7 +54,7 @@ namespace InventoryFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(usuario);
+                return View("Views/Administrador/Usuario/Crear.cshtml", usuario);
             }
 
             usuario.FechaCreacion = DateTime.Now;
@@ -64,11 +64,11 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
                 // Recargar vista con mensaje de error
-                return View(usuario);
+                return View("Views/Administrador/Usuario/Crear.cshtml", usuario);
             }
 
             // Redirigir a detalles del nuevo usuario
-            return RedirectToAction("Detalles", new { id = nuevoUsuario.Id });
+            return RedirectToAction("Views/Administrador/Usuario/Detalles.cshtml", new { id = nuevoUsuario.Id });
         }
 
         [HttpGet]
@@ -81,7 +81,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(usuario);
+            return View("Views/Administrador/Usuario/Editar.cshtml", usuario);
         }
 
         [HttpPost]
@@ -95,7 +95,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(usuario);
+                return View("Views/Administrador/Usuario/Editar.cshtml", usuario);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(usuario);
@@ -104,10 +104,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
                 // Mantener en la vista de edición
-                return View(usuario);
+                return View("Views/Administrador/Usuario/Editar.cshtml", usuario);
             }
 
-            return RedirectToAction("Detalles", new { id = usuario.Id });
+            return RedirectToAction("Views/Administrador/Usuario/Detalles.cshtml", new { id = usuario.Id });
         }
 
         [HttpGet]
@@ -120,7 +120,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(usuario);
+            return View("Views/Administrador/Usuario/Eliminar.cshtml", usuario);
         }
 
         [HttpPost]
@@ -134,7 +134,63 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/Administrador/Usuario/Index.cshtml");
         }
+
+        /*
+        // GET: Usuario/Login
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Usuario/Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(string nombre, string contraseña)
+        {
+            var (exito, mensaje, usuarios) = await genericoService.ObtenerTodos();
+
+            if (!exito)
+            {
+                TempData["Error"] = mensaje;
+                return View();
+            }
+
+            var usuario = usuarios.FirstOrDefault(u => u.Nombre == nombre && u.Contraseña == contraseña);
+
+            if (usuario == null)
+            {
+                ModelState.AddModelError("", "Nombre o contraseña incorrectos");
+                return View();
+            }
+
+            // Guardar usuario en sesión
+            HttpContext.Session.SetInt32("UsuarioId", usuario.Id);
+            HttpContext.Session.SetString("UsuarioNombre", usuario.Nombre);
+            HttpContext.Session.SetString("UsuarioRol", usuario.Cargo.ToString());
+
+            // Redirigir por rol
+            if (usuario.Cargo == Cargo.Admin)
+            {
+                return RedirectToAction("Index", "Administrador");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        // Cerrar sesión
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // Limpia toda la sesión
+            return RedirectToAction("Login");
+        }
+        */
+
     }
 }

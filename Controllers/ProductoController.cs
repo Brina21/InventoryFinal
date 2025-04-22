@@ -30,10 +30,10 @@ namespace InventoryFinal.Controllers
             {
                 TempData["Error"] = mensaje;
 
-                return View(new List<Producto>());
+                return View("Views/Administrador/Producto/Index.cshtml", new List<Producto>());
             }
 
-            return View(productos);
+            return View("Views/Administrador/Producto/Index.cshtml", productos);
         }
 
         [HttpGet]
@@ -46,7 +46,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(producto);
+            return View("Views/Administrador/Producto/Detalles.cshtml", producto);
         }
 
         [HttpGet]
@@ -57,7 +57,7 @@ namespace InventoryFinal.Controllers
             if (!exitoC)
             {
                 TempData["Error"] = mensajeC;
-                return View();
+                return View("Views/Administrador/Producto/Crear.cshtml");
             }
             // SelectList de Categorias para el dropdown (valor = Id, texto = Nombre)
             ViewBag.Categorias = new SelectList(categorias, "Id", "Nombre");
@@ -67,13 +67,13 @@ namespace InventoryFinal.Controllers
             if (!exitoP)
             {
                 TempData["Error"] = mensajeP;
-                return View();
+                return View("Views/Administrador/Producto/Crear.cshtml");
             }
             // SelectList de Proveedores para el dropdown (valor = Id, texto = Nombre)
             ViewBag.Proveedores = new SelectList(proveedores, "Id", "Nombre");
 
 
-            return View();
+            return View("Views/Administrador/Producto/Crear.cshtml");
         }
 
         [HttpPost]
@@ -82,7 +82,7 @@ namespace InventoryFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(producto);
+                return View("Views/Administrador/Producto/Crear.cshtml", producto);
             }
 
             var (exito, mensaje, nuevoProducto) = await genericoService.Crear(producto);
@@ -91,10 +91,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(producto);
+                return View("Views/Administrador/Producto/Crear.cshtml", producto);
             }
 
-            return RedirectToAction("Detalles", new { id = nuevoProducto.Id });
+            return RedirectToAction("Views/Administrador/Producto/Detalles.cshtml", new { id = nuevoProducto.Id });
         }
 
         [HttpGet]
@@ -105,7 +105,7 @@ namespace InventoryFinal.Controllers
             if (!exitoC)
             {
                 TempData["Error"] = mensajeC;
-                return View();
+                return View("Views/Administrador/Producto/Editar.cshtml");
             }
 
             // SelectList de Categorias para el dropdown (valor = Id, texto = Nombre)
@@ -116,7 +116,7 @@ namespace InventoryFinal.Controllers
             if (!exitoP)
             {
                 TempData["Error"] = mensajeP;
-                return View();
+                return View("Views/Administrador/Producto/Editar.cshtml");
             }
 
             // SelectList de Proveedores para el dropdown (valor = Id, texto = Nombre)
@@ -130,7 +130,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(producto);
+            return View("Views/Administrador/Producto/Editar.cshtml", producto);
         }
 
         [HttpPost]
@@ -144,7 +144,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(producto);
+                return View("Views/Administrador/Producto/Editar.cshtml", producto);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(producto);
@@ -153,10 +153,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(producto);
+                return View("Views/Administrador/Producto/Editar.cshtml", producto);
             }
 
-            return RedirectToAction("Detalles", new { id = producto.Id });
+            return RedirectToAction("Views/Administrador/Producto/Detalles.cshtml", new { id = producto.Id });
         }
 
         [HttpGet]
@@ -169,7 +169,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(producto);
+            return View("Views/Administrador/Producto/Eliminar.cshtml", producto);
         }
 
         [HttpPost]
@@ -183,7 +183,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/Administrador/Producto/Index.cshtml");
         }
     }
 }

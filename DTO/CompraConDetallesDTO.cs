@@ -5,7 +5,7 @@
     {
         public int Id { get; set; }
         public DateTime FechaCompra { get; set; } = DateTime.Now;
-        public decimal Total { get; set; } = 0;
+        public decimal Total { get; set; }
         public int? ClienteId { get; set; }
         public string? NombreCliente { get; set; }
         public int UsuarioId { get; set; }

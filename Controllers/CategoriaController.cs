@@ -22,10 +22,10 @@ namespace InventoryFinal.Controllers
             if (!exito)
             {
                 TempData["Error"] = mensaje;
-                return View(new List<Categoria>());
+                return View("Views/Administrador/Usuario/Index.cshtml", new List<Categoria>());
             }
 
-            return View(categorias);
+            return View("Views/Administrador/Categoria/Index.cshtml", categorias);
         }
 
         // Obtener Detalle Categoría por id
@@ -38,14 +38,14 @@ namespace InventoryFinal.Controllers
             {
                 return NotFound();
             }
-            return View(categoria);
+            return View("Views/Administrador/Categoria/Detalles.cshtml", categoria);
         }
 
         // Crear Categoría (Abre el formulario para crear)
         [HttpGet]
         public IActionResult Crear()
         {
-            return View();
+            return View("Views/Administrador/Categoria/Crear.cshtml");
         }
 
         // Enviar formulario
@@ -56,7 +56,7 @@ namespace InventoryFinal.Controllers
             if (!ModelState.IsValid)
             {
                 // Recarga la vista mostrando el error
-                return View(categoria);
+                return View("Views/Administrador/Categoria/Crear.cshtml", categoria);
             }
             
             var (exito, mensaje, nuevaCategoria) = await genericoService.Crear(categoria);
@@ -64,11 +64,11 @@ namespace InventoryFinal.Controllers
             if (!exito)
             {
                 ModelState.AddModelError("", mensaje);
-                return View(categoria);
+                return View("Views/Administrador/Categoria/Crear.cshtml", categoria);
             }
 
             // Se redirige al Index
-            return RedirectToAction("Detalles", new { id = nuevaCategoria.Id });
+            return RedirectToAction("Views/Administrador/Categoria/Detalles.cshtml", new { id = nuevaCategoria.Id });
         }
 
         [HttpGet]
@@ -81,7 +81,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(categoria);
+            return View("Views/Administrador/Categoria/Editar.cshtml", categoria);
         }
 
         [HttpPost]
@@ -95,7 +95,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(categoria);
+                return View("Views/Administrador/Categoria/Editar.cshtml", categoria);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(categoria);
@@ -104,10 +104,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(categoria);
+                return View("Views/Administrador/Categoria/Editar.cshtml", categoria);
             }
 
-            return RedirectToAction("Detalles", new { id = categoria.Id});
+            return RedirectToAction("Views/Administrador/Categoria/Detalles.cshtml", new { id = categoria.Id});
         }
 
         [HttpGet]
@@ -120,7 +120,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(categoria);
+            return View("Views/Administrador/Categoria/Eliminar.cshtml", categoria);
         }
 
         [HttpPost]
@@ -134,7 +134,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/Administrador/Categoria/Index.cshtml");
         }
     }
 }

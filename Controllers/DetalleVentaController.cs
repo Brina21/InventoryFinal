@@ -22,10 +22,10 @@ namespace InventoryFinal.Controllers
             {
                 TempData["Error"] = mensaje;
 
-                return View(new List<DetalleVenta>());
+                return View("Views/Administrador/DetalleVenta/Index.cshtml", new List<DetalleVenta>());
             }
 
-            return View(detalleVentas);
+            return View("Views/Administrador/DetalleVenta/Index.cshtml", detalleVentas);
         }
 
         [HttpGet]
@@ -38,13 +38,13 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(detalleVentas);
+            return View("Views/Administrador/DetalleVenta/Detalles.cshtml", detalleVentas);
         }
 
         [HttpGet]
         public IActionResult Crear()
         {
-            return View();
+            return View("Views/Administrador/DetalleVenta/Crear.cshtml");
         }
 
         [HttpPost]
@@ -53,7 +53,7 @@ namespace InventoryFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(detalleVenta);
+                return View("Views/Administrador/DetalleVenta/Crear.cshtml", detalleVenta);
             }
 
             var (exito, mensaje, nuevoDetalleVenta) = await genericoService.Crear(detalleVenta);
@@ -62,10 +62,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(detalleVenta);
+                return View("Views/Administrador/DetalleVenta/Crear.cshtml", detalleVenta);
             }
 
-            return RedirectToAction("Detalles", new { id = nuevoDetalleVenta.Id });
+            return RedirectToAction("Views/Administrador/DetalleVenta/Detalles.cshtml", new { id = nuevoDetalleVenta.Id });
         }
 
         [HttpGet]
@@ -78,7 +78,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(detalleVenta);
+            return View("Views/Administrador/DetalleVenta/Editar.cshtml", detalleVenta);
         }
 
         [HttpPost]
@@ -92,7 +92,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(detalleVenta);
+                return View("Views/Administrador/DetalleVenta/Editar.cshtml", detalleVenta);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(detalleVenta);
@@ -101,10 +101,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(detalleVenta);
+                return View("Views/Administrador/DetalleVenta/Editar.cshtml", detalleVenta);
             }
 
-            return RedirectToAction("Detalles", new { id = detalleVenta.Id });
+            return RedirectToAction("Views/Administrador/DetalleVenta/Detalles.cshtml", new { id = detalleVenta.Id });
         }
 
         [HttpGet]
@@ -117,7 +117,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(detalleVenta);
+            return View("Views/Administrador/DetalleVenta/Eliminar.cshtml", detalleVenta);
         }
 
         [HttpPost]
@@ -131,7 +131,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/Administrador/DetalleVenta/Index.cshtml");
         }
     }
 }

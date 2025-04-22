@@ -6,7 +6,7 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar la cultura predeterminada
+// Configurar la cultura predeterminada para los números decimales
 var cultureInfo = new CultureInfo("es-ES");
 cultureInfo.NumberFormat.CurrencyDecimalSeparator = ",";
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
@@ -30,6 +30,11 @@ builder.Services.AddScoped(typeof(VentaService));
 
 builder.Services.AddControllersWithViews();
 
+/*
+builder.Services.AddSession();
+builder.Services.AddDistributedMemoryCache();
+*/
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -42,7 +47,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+/*
+app.UseSession();
+*/
 app.UseAuthorization();
 
 app.MapControllerRoute(

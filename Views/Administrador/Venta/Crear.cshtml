@@ -1,0 +1,48 @@
+﻿@model InventoryFinal.Models.Venta
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear Venta</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Crear">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FechaVenta" class="control-label">Fecha Venta</label>
+                <input asp-for="FechaVenta" class="form-control" />
+                <span asp-validation-for="FechaVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label">Cliente</label>
+                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.Clientes">
+                    <option value="null">Ninguno</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioId" class="control-label">Usuario</label>
+                <select asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.Usuarios">
+                    <option value="">Elige un usuario</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Cancelar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -29,10 +29,10 @@ namespace InventoryFinal.Controllers
             {
                 TempData["Error"] = mensaje;
 
-                return View(new List<Compra>());
+                return View("Views/Administrador/Compra/Index.cshtml", new List<Compra>());
             }
 
-            return View(compras);
+            return View("Views/Administrador/Compra/Index.cshtml", compras);
         }
 
         [HttpGet]
@@ -45,7 +45,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(compras);
+            return View("Views/Administrador/Compra/Detalles.cshtml", compras);
         }
 
         [HttpGet]
@@ -56,7 +56,7 @@ namespace InventoryFinal.Controllers
             if (!exitoU)
             {
                 TempData["Error"] = mensajeU;
-                return View();
+                return View("Views/Administrador/Compra/Crear.cshtml");
             }
             // Dropdown usuarios (valor = id, texto = nombre)
             ViewBag.Usuarios = new SelectList(usuarios, "Id", "Nombre");
@@ -66,11 +66,11 @@ namespace InventoryFinal.Controllers
             if (!exitoC)
             {
                 TempData["Error"] = mensajeC;
-                return View();
+                return View("Views/Administrador/Compra/Crear.cshtml");
             }
             // Dropdown clientes (valor = id, texto = nombre)
             ViewBag.Clientes = new SelectList(clientes, "Id", "Nombre");
-            return View();
+            return View("Views/Administrador/Compra/Crear.cshtml");
         }
 
         [HttpPost]
@@ -89,10 +89,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(compra);
+                return View("Views/Administrador/Compra/Crear.cshtml", compra);
             }
 
-            return RedirectToAction("Detalles", new { id = nuevaCompra.Id });
+            return RedirectToAction("Views/Administrador/Compra/Detalles.cshtml", new { id = nuevaCompra.Id });
         }
 
         [HttpGet]
@@ -103,7 +103,7 @@ namespace InventoryFinal.Controllers
             if (!exitoU)
             {
                 TempData["Error"] = mensajeU;
-                return View();
+                return View("Views/Administrador/Compra/Editar.cshtml");
             }
             // Dropdown usuarios (valor = id, texto = nombre)
             ViewBag.Usuarios = new SelectList(usuarios, "Id", "Nombre");
@@ -113,7 +113,7 @@ namespace InventoryFinal.Controllers
             if (!exitoC)
             {
                 TempData["Error"] = mensajeC;
-                return View();
+                return View("Views/Administrador/Compra/Editar.cshtml");
             }
             // Dropdown clientes (valor = id, texto = nombre)
             ViewBag.Clientes = new SelectList(clientes, "Id", "Nombre");
@@ -126,7 +126,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(compra);
+            return View("Views/Administrador/Compra/Editar.cshtml", compra);
         }
 
         [HttpPost]
@@ -140,7 +140,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(compra);
+                return View("Views/Administrador/Compra/Editar.cshtml", compra);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(compra);
@@ -149,10 +149,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View(compra);
+                return View("Views/Administrador/Compra/Editar.cshtml", compra);
             }
 
-            return RedirectToAction("Detalles", new { id = compra.Id });
+            return RedirectToAction("Views/Administrador/Compra/Detalles.cshtml", new { id = compra.Id });
         }
 
         [HttpGet]
@@ -165,7 +165,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View(compra);
+            return View("Views/Administrador/Compra/Eliminar.cshtml", compra);
         }
 
         [HttpPost]
@@ -179,7 +179,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Views/Administrador/Compra/Index.cshtml");
         }
     }
 }
