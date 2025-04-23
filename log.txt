@@ -1,0 +1,26 @@
+ 23/04/2025 8:11:22 -> Entidades de Categoria obtenidas correctamente.
+ 23/04/2025 11:07:28 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:11:06 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:13:12 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:19:11 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:19:18 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:19:58 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:19:58 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:20:45 -> Entidades de Categoria obtenidas correctamente.
+ 23/04/2025 11:23:10 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:24:59 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:26:32 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:29:49 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:32:04 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:34:52 -> Entidades de Categoria obtenidas correctamente.
+ 23/04/2025 11:34:52 -> Entidades de Proveedor obtenidas correctamente.
+ 23/04/2025 11:35:00 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:35:32 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:41:56 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:42:05 -> Error al obtener las entidades de la BD: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+ 23/04/2025 11:42:13 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 11:42:24 -> Error al eliminar la Compra: An error occurred while saving the entity changes. See the inner exception for details.
+ 23/04/2025 12:26:30 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 12:32:29 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 12:34:53 -> Entidades de Cliente obtenidas correctamente.
+ 23/04/2025 12:35:02 -> Entidades de Cliente obtenidas correctamente.

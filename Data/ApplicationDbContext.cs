@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using InventoryFinal.Models;
+using InventoryFinal.DTO;
 
 namespace InventoryFinal.Data
 {
@@ -170,5 +171,6 @@ namespace InventoryFinal.Data
                 .HasIndex(c => c.Nombre)
                 .IsUnique();
         }
+        public DbSet<InventoryFinal.DTO.DetalleCompraDTO> DetalleCompraDTO { get; set; } = default!;
     }
 }

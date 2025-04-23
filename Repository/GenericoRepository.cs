@@ -48,8 +48,7 @@ namespace InventoryFinal.Repository
         {
             try
             {
-                List<T> resultado = await Entidades.ToListAsync();
-                return resultado;
+                return await Entidades.ToListAsync();
             }
             catch (Exception ex)
             {

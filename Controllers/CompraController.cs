@@ -1,35 +1,31 @@
-﻿using InventoryFinal.Models;
+﻿using InventoryFinal.DTO;
+using InventoryFinal.Models;
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InventoryFinal.Controllers
 {
     public class CompraController : Controller
     {
-        private readonly GenericoService<Compra> genericoService;
         private readonly CompraService compraService;
+        private readonly ProductoService productoService;
         private readonly GenericoService<Cliente> clienteService;
-        private readonly GenericoService<Usuario> usuarioService;
 
-        public CompraController(GenericoService<Compra> genericoService, CompraService compraService, GenericoService<Cliente> clienteService, GenericoService<Usuario> usuarioService)
+        public CompraController(CompraService compraService, ProductoService productoService, GenericoService<Cliente> clienteService)
         {
-            this.genericoService = genericoService;
             this.compraService = compraService;
+            this.productoService = productoService;
             this.clienteService = clienteService;
-            this.usuarioService = usuarioService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var (exito, mensaje, compras) = await compraService.ObtenerTodasCompras();
+            var compras = await compraService.ObtenerTodasLasComprasDTO();
 
-            if (!exito)
+            if (compras == null)
             {
-                TempData["Error"] = mensaje;
-
-                return View("Views/Administrador/Compra/Index.cshtml", new List<Compra>());
+                compras = new List<CompraConDetallesDTO>();
             }
 
             return View("Views/Administrador/Compra/Index.cshtml", compras);
@@ -38,58 +34,61 @@ namespace InventoryFinal.Controllers
         [HttpGet]
         public async Task<IActionResult> Detalles(int id)
         {
-            var (exito, mensaje, compras) = await compraService.ObtenerCompraPorId(id);
+            var compra = await compraService.ObtenerCompraConDetallesPorId(id);
 
-            if (!exito)
+            if (compra == null)
             {
                 return NotFound();
             }
 
-            return View("Views/Administrador/Compra/Detalles.cshtml", compras);
+            return View("Views/Administrador/Compra/Detalles.cshtml", compra);
         }
 
         [HttpGet]
         public async Task<IActionResult> Crear()
         {
-            // Obtener todos los Usuario
-            var (exitoU, mensajeU, usuarios) = await usuarioService.ObtenerTodos();
-            if (!exitoU)
-            {
-                TempData["Error"] = mensajeU;
-                return View("Views/Administrador/Compra/Crear.cshtml");
-            }
-            // Dropdown usuarios (valor = id, texto = nombre)
-            ViewBag.Usuarios = new SelectList(usuarios, "Id", "Nombre");
+            var (exitoProductos, _, productos) = await productoService.ObtenerTodosProductos();
+            var (exitoClientes, mensajeClientes, clientes) = await clienteService.ObtenerTodos();
 
-            // Obtener todos los Clientes
-            var (exitoC, mensajeC, clientes) = await clienteService.ObtenerTodos();
-            if (!exitoC)
+            if (!exitoClientes || clientes == null)
             {
-                TempData["Error"] = mensajeC;
-                return View("Views/Administrador/Compra/Crear.cshtml");
+                ModelState.AddModelError("", $"Error al cargar clientes: {mensajeClientes}");
+                clientes = new List<Cliente>(); // Evita que sea null
             }
-            // Dropdown clientes (valor = id, texto = nombre)
-            ViewBag.Clientes = new SelectList(clientes, "Id", "Nombre");
-            return View("Views/Administrador/Compra/Crear.cshtml");
+
+            ViewBag.Productos = productos ?? new List<Producto>();
+            ViewBag.Clientes = clientes;
+
+            return View("Views/Administrador/Compra/Crear.cshtml", new CompraConDetallesDTO());
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Crear(Compra compra)
+        public async Task<IActionResult> Crear(CompraConDetallesDTO compraDto)
         {
-            
             if (!ModelState.IsValid)
             {
-                return View(compra);
+                var (exitoProductos, _, productos) = await productoService.ObtenerTodosProductos();
+                var (exitoClientes, mensajeClientes, clientes) = await clienteService.ObtenerTodos();
+                ViewBag.Productos = productos ?? new List<Producto>();
+                ViewBag.Clientes = clientes ?? new List<Cliente>();
+
+                return View("Views/Administrador/Compra/Crear.cshtml", compraDto);
             }
 
-            var (exito, mensaje, nuevaCompra) = await genericoService.Crear(compra);
+            var (exito, mensaje, nuevaCompra) = await compraService.CrearCompraDTO(compraDto);
 
             if (!exito)
             {
-                ModelState.AddModelError("", mensaje);
+                var (exitoProductos, _, productos) = await productoService.ObtenerTodosProductos();
+                var (exitoClientes, mensajeClientes, clientes) = await clienteService.ObtenerTodos();
 
-                return View("Views/Administrador/Compra/Crear.cshtml", compra);
+                ViewBag.Productos = productos ?? new List<Producto>();
+                ViewBag.Clientes = clientes ?? new List<Cliente>();
+
+                ModelState.AddModelError("", mensaje);
+                return View("Views/Administrador/Compra/Crear.cshtml", compraDto);
             }
 
             return RedirectToAction("Views/Administrador/Compra/Detalles.cshtml", new { id = nuevaCompra.Id });
@@ -98,69 +97,49 @@ namespace InventoryFinal.Controllers
         [HttpGet]
         public async Task<IActionResult> Editar(int id)
         {
-            // Obtener todos los Usuario
-            var (exitoU, mensajeU, usuarios) = await usuarioService.ObtenerTodos();
-            if (!exitoU)
-            {
-                TempData["Error"] = mensajeU;
-                return View("Views/Administrador/Compra/Editar.cshtml");
-            }
-            // Dropdown usuarios (valor = id, texto = nombre)
-            ViewBag.Usuarios = new SelectList(usuarios, "Id", "Nombre");
+            var compra = await compraService.ObtenerCompraConDetallesPorId(id);
 
-            // Obtener todos los Clientes
-            var (exitoC, mensajeC, clientes) = await clienteService.ObtenerTodos();
-            if (!exitoC)
-            {
-                TempData["Error"] = mensajeC;
-                return View("Views/Administrador/Compra/Editar.cshtml");
-            }
-            // Dropdown clientes (valor = id, texto = nombre)
-            ViewBag.Clientes = new SelectList(clientes, "Id", "Nombre");
-
-
-            var (exito, mensaje, compra) = await compraService.ObtenerCompraPorId(id);
-
-            if (!exito)
+            if (compra == null)
             {
                 return NotFound();
             }
+
+            ViewBag.Productos = productoService.ObtenerTodosProductos();
+            ViewBag.Clientes = clienteService.ObtenerTodos();
 
             return View("Views/Administrador/Compra/Editar.cshtml", compra);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Editar(int id, Compra compra)
+        public async Task<IActionResult> Editar(int id, CompraConDetallesDTO dto)
         {
-            if (id != compra.Id)
+            if (id != dto.Id)
             {
                 return NotFound();
             }
 
             if (!ModelState.IsValid)
             {
-                return View("Views/Administrador/Compra/Editar.cshtml", compra);
+                var productos = await productoService.ObtenerTodosProductos();
+                var clientes = await clienteService.ObtenerTodos();
+
+                ViewBag.Productos = productos;
+                ViewBag.Clientes = clientes;
+
+                return View("Views/Administrador/Compra/Editar.cshtml", dto);
             }
 
-            var (exito, mensaje) = await genericoService.Actualizar(compra);
-
-            if (!exito)
-            {
-                ModelState.AddModelError("", mensaje);
-
-                return View("Views/Administrador/Compra/Editar.cshtml", compra);
-            }
-
-            return RedirectToAction("Views/Administrador/Compra/Detalles.cshtml", new { id = compra.Id });
+            await compraService.ActualizarCompra(dto);
+            return RedirectToAction("Views/Administrador/Compra/Detalles.cshtml", new { id = dto.Id });
         }
 
         [HttpGet]
         public async Task<IActionResult> Eliminar(int id)
         {
-            var (exito, mensaje, compra) = await compraService.ObtenerCompraPorId(id);
+            var compra = await compraService.ObtenerCompraConDetallesPorId(id);
 
-            if (!exito)
+            if (compra == null)
             {
                 return NotFound();
             }
@@ -172,12 +151,7 @@ namespace InventoryFinal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
-            var (exito, mensaje) = await genericoService.Eliminar(id);
-
-            if (!exito)
-            {
-                TempData["Error"] = mensaje;
-            }
+            await compraService.EliminarCompra(id);
 
             return RedirectToAction("Views/Administrador/Compra/Index.cshtml");
         }

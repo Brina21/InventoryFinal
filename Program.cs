@@ -1,8 +1,10 @@
 using InventoryFinal.Data;
+using InventoryFinal.Models;
 using InventoryFinal.Repository;
 using InventoryFinal.Service;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,12 +30,21 @@ builder.Services.AddScoped(typeof(CompraService));
 builder.Services.AddScoped(typeof(VentaRepository));
 builder.Services.AddScoped(typeof(VentaService));
 
+builder.Services.AddScoped<GenericoService<Cliente>>();
+
+
 builder.Services.AddControllersWithViews();
 
 /*
 builder.Services.AddSession();
 builder.Services.AddDistributedMemoryCache();
 */
+
+// Sirve para serializar objetos a JSON y evitar el bucle de referencia
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
 
 var app = builder.Build();
 

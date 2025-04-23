@@ -1,55 +1,32 @@
-﻿@model IEnumerable<InventoryFinal.Models.Compra>
+﻿@using InventoryFinal.DTO
+@model List<CompraConDetallesDTO>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<h2>Compras</h2>
 
-<h1>Compras</h1>
-
-
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
-                Fecha Compra
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th></th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Usuario</th>
+            <th>Cliente</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCompra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Nombre)
-            </td>
-            <td>
-                <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Detalles" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
-}
+        @foreach (var compra in Model)
+        {
+            <tr>
+                <td>@compra.FechaCompra.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@compra.Total €</td>
+                <td>@compra.NombreUsuario</td>
+                <td>@(string.IsNullOrEmpty(compra.NombreCliente) ? "Sin cliente" : compra.NombreCliente)</td>
+                <td>
+                    <a asp-action="Detalles" asp-route-id="@compra.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Editar" asp-route-id="@compra.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Eliminar" asp-route-id="@compra.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-
-<p>
-    <a asp-action="Crear">Nuevo</a>
-</p>
+<a asp-action="Crear" class="btn btn-success mb-3">Nueva Compra</a>
