@@ -53,10 +53,16 @@ namespace InventoryFinal.Controllers
             if (!exitoClientes || clientes == null)
             {
                 ModelState.AddModelError("", $"Error al cargar clientes: {mensajeClientes}");
-                clientes = new List<Cliente>(); // Evita que sea null
+                clientes = new List<Cliente>();
             }
 
-            ViewBag.Productos = productos ?? new List<Producto>();
+            if (!exitoProductos || productos == null)
+            {
+                ModelState.AddModelError("", "Error al cargar productos");
+                productos = new List<Producto>();
+            }
+
+            ViewBag.Productos = productos;
             ViewBag.Clientes = clientes;
 
             return View("Views/Administrador/Compra/Crear.cshtml", new CompraConDetallesDTO());
@@ -104,8 +110,23 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            ViewBag.Productos = productoService.ObtenerTodosProductos();
-            ViewBag.Clientes = clienteService.ObtenerTodos();
+            var (exitoProductos, _, productos) = await productoService.ObtenerTodosProductos();
+            var (exitoClientes, mensajeClientes, clientes) = await clienteService.ObtenerTodos();
+
+            if (!exitoClientes || clientes == null)
+            {
+                ModelState.AddModelError("", $"Error al cargar clientes: {mensajeClientes}");
+                clientes = new List<Cliente>();
+            }
+
+            if (!exitoProductos || productos == null)
+            {
+                ModelState.AddModelError("", "Error al cargar productos");
+                productos = new List<Producto>();
+            }
+
+            ViewBag.Productos = productos;
+            ViewBag.Clientes = clientes;
 
             return View("Views/Administrador/Compra/Editar.cshtml", compra);
         }
@@ -121,11 +142,10 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                var productos = await productoService.ObtenerTodosProductos();
-                var clientes = await clienteService.ObtenerTodos();
-
-                ViewBag.Productos = productos;
-                ViewBag.Clientes = clientes;
+                var (exitoProductos, _, productos) = await productoService.ObtenerTodosProductos();
+                var (exitoClientes, mensajeClientes, clientes) = await clienteService.ObtenerTodos();
+                ViewBag.Productos = productos ?? new List<Producto>();
+                ViewBag.Clientes = clientes ?? new List<Cliente>();
 
                 return View("Views/Administrador/Compra/Editar.cshtml", dto);
             }

@@ -1,9 +1,15 @@
 ﻿@using InventoryFinal.DTO
+@using Newtonsoft.Json
 @model CompraConDetallesDTO
 @{
     ViewBag.Title = "Crear Compra";
     var productos = ViewBag.Productos as List<Producto> ?? new List<Producto>();
     var clientes = ViewBag.Clientes as List<Cliente> ?? new List<Cliente>();
+
+    var settings = new JsonSerializerSettings
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+    };
 }
 
 <h2>Crear Compra</h2>
@@ -16,7 +22,7 @@
 
     <div>
         <label>Fecha</label>
-        <input type="text" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")" readonly class="form-control" />
+        <input type="text" value="@DateTime.Now.ToString("dd-MM-yyyy HH:mm")" readonly class="form-control" />
     </div>
 
     <div>
@@ -46,7 +52,7 @@
 
 @section Scripts {
     <script>
-        const productos = @Html.Raw(Json.Serialize(productos));
+        const productos = @Html.Raw(JsonConvert.SerializeObject(productos, settings));
         let index = 0;
 
         function agregarProducto(nombre = "", cantidad = 1, precio = 0) {
@@ -58,17 +64,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label>Producto</label>
-                        <select name="DetalleCompras[${index}].NombreProducto" class="form-control" onchange="actualizarPrecio(${index})">
+                        <select name="DetalleCompraDTO[${index}].NombreProducto" class="form-control" onchange="actualizarPrecio(${index})">
                             ${productos.map(p => `<option value="${p.Nombre}" ${p.Nombre === nombre ? 'selected' : ''}>${p.Nombre}</option>`).join("")}
                         </select>
                     </div>
                     <div class="col-md-2">
                         <label>Cantidad</label>
-                        <input name="DetalleCompras[${index}].Unidades" type="number" class="form-control" value="${cantidad}" min="1" onchange="calcularSubtotal(${index})"/>
+                        <input name="DetalleCompraDTO[${index}].Unidades" type="number" class="form-control" value="${cantidad}" min="1" onchange="calcularSubtotal(${index})"/>
                     </div>
                     <div class="col-md-2">
                         <label>Precio</label>
-                        <input name="DetalleCompras[${index}].PrecioUnitario" type="number" step="0.01" class="form-control" value="${precio}" onchange="calcularSubtotal(${index})"/>
+                        <input name="DetalleCompraDTO[${index}].PrecioUnitario" type="number" readonly class="form-control" value="${precio}" onchange="calcularSubtotal(${index})"/>
                     </div>
                     <div class="col-md-2">
                         <label>Subtotal</label>
@@ -82,8 +88,8 @@
         }
 
         function actualizarPrecio(i) {
-            const productoSelect = document.querySelector(`[name='DetalleCompras[${i}].NombreProducto']`);
-            const precioInput = document.querySelector(`[name='DetalleCompras[${i}].PrecioUnitario']`);
+            const productoSelect = document.querySelector(`[name='DetalleCompraDTO[${i}].NombreProducto']`);
+            const precioInput = document.querySelector(`[name='DetalleCompraDTO[${i}].PrecioUnitario']`);
             const producto = productos.find(p => p.Nombre === productoSelect.value);
             if (producto) {
                 precioInput.value = producto.Precio;
@@ -92,8 +98,8 @@
         }
 
         function calcularSubtotal(i) {
-            const unidades = parseFloat(document.querySelector(`[name='DetalleCompras[${i}].Unidades']`).value) || 0;
-            const precio = parseFloat(document.querySelector(`[name='DetalleCompras[${i}].PrecioUnitario']`).value) || 0;
+            const unidades = parseFloat(document.querySelector(`[name='DetalleCompraDTO[${i}].Unidades']`).value) || 0;
+            const precio = parseFloat(document.querySelector(`[name='DetalleCompraDTO[${i}].PrecioUnitario']`).value) || 0;
             const subtotal = unidades * precio;
             document.getElementById(`subtotal-${i}`).value = subtotal.toFixed(2);
             calcularTotal();
