@@ -1,8 +1,13 @@
 ﻿@{
+    Layout = "_LayoutInicio";
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+    <h1 class="display-4">Bienvenido a Inven-tory</h1>
+    <p class="lead">Por favor, inicia sesión o regístrate para continuar.</p>
+
+    <a href="@Url.Action("Login", "Home")" class="btn btn-primary m-2">Iniciar sesión</a>
+    <br />
+    <a href="@Url.Action("Register", "Home")" class="btn btn-outline-secondary m-2">Registrarse</a>
 </div>

@@ -101,6 +101,7 @@ namespace InventoryFinal.Repository
                 {
                     compra.DetalleCompras.Add(new DetalleCompra
                     {
+                        CompraId = compra.Id,
                         ProductoId = _context.Productos.FirstOrDefault(p => p.Nombre == detalle.NombreProducto)?.Id,
                         Cantidad = detalle.Unidades,
                         PrecioUnitario = detalle.PrecioUnitario,

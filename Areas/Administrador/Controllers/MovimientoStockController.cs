@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryFinal.Controllers
 {
+    [Area("Administrador")]
     public class MovimientoStockController : Controller
     {
         private readonly GenericoService<MovimientoStock> genericoService;
@@ -22,10 +23,10 @@ namespace InventoryFinal.Controllers
             {
                 TempData["Error"] = mensaje;
 
-                return View("Views/Administrador/MovimientoStock/Index.cshtml", new List<MovimientoStock>());
+                return View("Index", new List<MovimientoStock>());
             }
 
-            return View("Views/Administrador/MovimientoStock/Index.cshtml", movimientoStocks);
+            return View("Index", movimientoStocks);
         }
 
         [HttpGet]
@@ -38,13 +39,13 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/MovimientoStock/Detalles.cshtml", movimientoStocks);
+            return View("Detalles", movimientoStocks);
         }
 
         [HttpGet]
         public IActionResult Crear()
         {
-            return View("Views/Administrador/MovimientoStock/Crear.cshtml");
+            return View("Crear");
         }
 
         [HttpPost]
@@ -53,7 +54,7 @@ namespace InventoryFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Views/Administrador/MovimientoStock/Crear.cshtml", movimientoStock);
+                return View("Crear", movimientoStock);
             }
 
             var (exito, mensaje, nuevoMovimientoStock) = await genericoService.Crear(movimientoStock);
@@ -62,10 +63,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View("Views/Administrador/MovimientoStock/Crear.cshtml", movimientoStock);
+                return View("Crear", movimientoStock);
             }
 
-            return RedirectToAction("Views/Administrador/MovimientoStock/Detalles.cshtml", new { id = nuevoMovimientoStock.Id });
+            return View("Detalles", new { id = nuevoMovimientoStock.Id });
         }
 
         [HttpGet]
@@ -78,7 +79,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/MovimientoStock/Editar.cshtml", movimientoStock);
+            return View("Editar", movimientoStock);
         }
 
         [HttpPost]
@@ -92,7 +93,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View("Views/Administrador/MovimientoStock/Editar.cshtml", movimientoStock);
+                return View("Editar", movimientoStock);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(movimientoStock);
@@ -101,10 +102,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View("Views/Administrador/MovimientoStock/Editar.cshtml", movimientoStock);
+                return View("Editar", movimientoStock);
             }
 
-            return RedirectToAction("Views/Administrador/MovimientoStock/Detalles.cshtml", new { id = movimientoStock.Id });
+            return RedirectToAction("Detalles", new { id = movimientoStock.Id });
         }
 
         [HttpGet]
@@ -117,7 +118,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/MovimientoStock/Eliminar.cshtml", movimientoStock);
+            return View("Eliminar", movimientoStock);
         }
 
         [HttpPost]
@@ -131,7 +132,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Views/Administrador/MovimientoStock/Index.cshtml");
+            return RedirectToAction("Index");
         }
     }
 }

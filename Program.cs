@@ -9,42 +9,41 @@ using Newtonsoft.Json;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurar la cultura predeterminada para los números decimales
-var cultureInfo = new CultureInfo("es-ES");
-cultureInfo.NumberFormat.CurrencyDecimalSeparator = ",";
+var cultureInfo = new CultureInfo("en-US");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-//
 
+// Configuración del contexto y servicios
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped(typeof(IGenericoRepository<>), typeof(GenericoRepository<>));
 builder.Services.AddScoped(typeof(GenericoService<>));
 
-builder.Services.AddScoped(typeof(ProductoRepository));
-builder.Services.AddScoped(typeof(ProductoService));
+builder.Services.AddScoped<ProductoRepository>();
+builder.Services.AddScoped<ProductoService>();
 
-builder.Services.AddScoped(typeof(CompraRepository));
-builder.Services.AddScoped(typeof(CompraService));
+builder.Services.AddScoped<CompraRepository>();
+builder.Services.AddScoped<CompraService>();
 
-builder.Services.AddScoped(typeof(VentaRepository));
-builder.Services.AddScoped(typeof(VentaService));
+builder.Services.AddScoped<VentaRepository>();
+builder.Services.AddScoped<VentaService>();
 
 builder.Services.AddScoped<GenericoService<Cliente>>();
 
-
-builder.Services.AddControllersWithViews();
-
-/*
-builder.Services.AddSession();
+// Configuración de sesión
 builder.Services.AddDistributedMemoryCache();
-*/
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
-// Sirve para serializar objetos a JSON y evitar el bucle de referencia
+// Configuración de controladores con NewtonsoftJson (evitar bucles de referencia)
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
-
 
 var app = builder.Build();
 
@@ -58,10 +57,15 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-/*
+
 app.UseSession();
-*/
+
 app.UseAuthorization();
+
+// Soporte para ÁREAS y RUTA POR DEFECTO
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

@@ -1,5 +1,4 @@
-﻿@page "/register"
-@model Inventory.Views.Session.RegisterModel
+﻿@model dynamic
 @{
     Layout = null;
 }
@@ -55,7 +54,7 @@
             </button>
         </form>
 
-        <p class="text-center text-sm text-gray-600 mt-4">¿Ya tienes una cuenta? <a href="@Url.Action("Login", "Session")" class="text-purple-600 font-medium hover:underline">Iniciar sesión</a></p>
+        <p class="text-center text-sm text-gray-600 mt-4">¿Ya tienes una cuenta? <a href="@Url.Action("Login", "Home")" class="text-purple-600 font-medium hover:underline">Iniciar sesión</a></p>
     </div>
 </body>
 </html>

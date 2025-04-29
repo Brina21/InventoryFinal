@@ -1,0 +1,158 @@
+ 24/04/2025 12:35:16 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:35:33 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:35:43 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:38:21 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:38:59 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:39:08 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:39:14 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:41:50 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:42:49 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:42:54 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:44:01 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:45:06 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:45:18 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:45:39 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:46:18 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:47:19 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:47:26 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:47:37 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:47:46 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:49:06 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:49:26 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:49:31 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:50:49 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:50:55 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:51:16 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:51:22 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:51:41 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:52:11 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:53:28 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:58:24 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 12:58:32 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 13:04:04 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 13:04:08 -> Error al actualizar la Compra: An error occurred while saving the entity changes. See the inner exception for details.
+ 24/04/2025 13:05:44 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 13:38:51 -> Entidades de Categoria obtenidas correctamente.
+ 24/04/2025 16:20:48 -> Entidades de Categoria obtenidas correctamente.
+ 24/04/2025 16:20:56 -> Entidades de Cliente obtenidas correctamente.
+ 24/04/2025 16:20:57 -> Entidades de Proveedor obtenidas correctamente.
+ 24/04/2025 16:20:58 -> Entidades de Usuario obtenidas correctamente.
+ 24/04/2025 16:36:41 -> Entidades de Categoria obtenidas correctamente.
+ 24/04/2025 16:36:54 -> Entidades de Categoria obtenidas correctamente.
+ 24/04/2025 16:36:57 -> Entidades de Usuario obtenidas correctamente.
+ 24/04/2025 16:44:35 -> Entidades de Usuario obtenidas correctamente.
+ 25/04/2025 8:23:20 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 8:42:14 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 8:43:52 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 8:44:02 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 8:46:38 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 8:47:49 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 8:47:51 -> Error al actualizar la Compra: An error occurred while saving the entity changes. See the inner exception for details.
+ 25/04/2025 8:49:51 -> No se encontró la Compra con el id: 1002
+ 25/04/2025 8:49:55 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 10:33:46 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:34:54 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:42:22 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:42:33 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:51:10 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:51:12 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:51:13 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:52:02 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 10:54:02 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:02:51 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:05:00 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:06:14 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:07:01 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:07:10 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:08:05 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:08:11 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:08:13 -> Categoria obtenida correctamente.
+ 25/04/2025 11:08:14 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:08:18 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:08:20 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:08:20 -> Entidades de Proveedor obtenidas correctamente.
+ 25/04/2025 11:09:33 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:09:41 -> Entidades de Proveedor obtenidas correctamente.
+ 25/04/2025 11:09:42 -> Entidades de Usuario obtenidas correctamente.
+ 25/04/2025 11:10:31 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 11:10:32 -> Entidades de Proveedor obtenidas correctamente.
+ 25/04/2025 11:10:33 -> Entidades de Usuario obtenidas correctamente.
+ 25/04/2025 11:10:35 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:17:14 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:19:11 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:19:13 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:20:23 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:22:45 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:23:18 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:34:54 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 11:34:58 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 11:34:59 -> Entidades de Proveedor obtenidas correctamente.
+ 25/04/2025 11:35:00 -> Entidades de Usuario obtenidas correctamente.
+ 25/04/2025 12:02:38 -> Entidades de Usuario obtenidas correctamente.
+ 25/04/2025 12:02:49 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 12:05:26 -> Entidades de Proveedor obtenidas correctamente.
+ 25/04/2025 12:07:03 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 12:09:23 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 12:09:35 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 12:10:10 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 12:18:48 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 12:22:30 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 12:24:16 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 12:29:16 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 13:05:48 -> Entidades de Categoria obtenidas correctamente.
+ 25/04/2025 13:05:58 -> Entidades de Cliente obtenidas correctamente.
+ 25/04/2025 13:05:59 -> Entidades de Proveedor obtenidas correctamente.
+ 25/04/2025 13:06:00 -> Entidades de Usuario obtenidas correctamente.
+ 25/04/2025 13:07:38 -> Entidades de Usuario obtenidas correctamente.
+ 29/04/2025 9:15:32 -> Entidades de Categoria obtenidas correctamente.
+ 29/04/2025 9:16:26 -> Entidades de Categoria obtenidas correctamente.
+ 29/04/2025 9:17:30 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:17:35 -> Error al actualizar la Compra: An error occurred while saving the entity changes. See the inner exception for details.
+ 29/04/2025 9:17:47 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:18:03 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:19:35 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:19:38 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:19:42 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:19:55 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:20:15 -> Entidades de Proveedor obtenidas correctamente.
+ 29/04/2025 9:20:17 -> Entidades de Usuario obtenidas correctamente.
+ 29/04/2025 9:32:46 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:36:32 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:36:36 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:37:15 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:52:54 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:53:58 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:57:33 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:57:43 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 9:59:25 -> Error al eliminar la Compra: An error occurred while saving the entity changes. See the inner exception for details.
+ 29/04/2025 10:08:37 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:10:05 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:10:13 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:10:17 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:10:39 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:11:18 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:11:41 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:12:32 -> Error al obtener la Compra por id: Object reference not set to an instance of an object.
+ 29/04/2025 10:13:39 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:43:13 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:43:32 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:43:46 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:44:07 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:44:20 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:47:07 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:48:07 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:48:56 -> Entidades de Cliente obtenidas correctamente.
+ 29/04/2025 10:49:08 -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:52:59 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:53:50 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:55:09 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:55:27 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:55:40 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:56:21 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:57:28 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 10:59:47 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 11:00:06 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 11:00:25 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 11:11:05 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 11:12:50 AM -> Entidades de Cliente obtenidas correctamente.
+ 4/29/2025 11:14:57 AM -> Entidades de Cliente obtenidas correctamente.

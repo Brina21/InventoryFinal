@@ -1,24 +1,24 @@
 ﻿namespace InventoryFinal.DTO
 {
-    // DTO para mostrar DetallesCompra junto con la Compra
-    public class CompraConDetallesDTO
+    // DTO para mostrar DetallesVenta junto con la Venta
+    public class VentaConDetallesDTO
     {
         public int Id { get; set; }
-        public DateTime FechaCompra { get; set; } = DateTime.Now;
+        public DateTime FechaVenta { get; set; } = DateTime.Now;
         public decimal Total { get; set; }
         public string? NombreUsuario { get; set; }
         public string? NombreCliente { get; set; }
 
-        public List<DetalleCompraDTO> DetalleCompras { get; set; } = new List<DetalleCompraDTO>();
+        public List<DetalleVentaDTO> DetalleVentas { get; set; } = new List<DetalleVentaDTO>();
     }
 
-    public class DetalleCompraDTO
+    public class DetalleVentaDTO
     {
         public int Id { get; set; }
         public string? NombreProducto { get; set; }
         public int Unidades { get; set; }
         public decimal PrecioUnitario { get; set; } = 0;
         public decimal SubTotal { get; set; } = 0;
-        
+
     }
 }

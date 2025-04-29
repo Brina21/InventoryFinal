@@ -22,9 +22,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Administrador\Home\" />
-    <Folder Include="Views\Empleado\Home\" />
-  </ItemGroup>
-
 </Project>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryFinal.Controllers
 {
+    [Area("Administrador")]
     public class CompraController : Controller
     {
         private readonly CompraService compraService;
@@ -28,7 +29,7 @@ namespace InventoryFinal.Controllers
                 compras = new List<CompraConDetallesDTO>();
             }
 
-            return View("Views/Administrador/Compra/Index.cshtml", compras);
+            return View("Index", compras);
         }
 
         [HttpGet]
@@ -41,7 +42,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/Compra/Detalles.cshtml", compra);
+            return View("Detalles", compra);
         }
 
         [HttpGet]
@@ -65,7 +66,9 @@ namespace InventoryFinal.Controllers
             ViewBag.Productos = productos;
             ViewBag.Clientes = clientes;
 
-            return View("Views/Administrador/Compra/Crear.cshtml", new CompraConDetallesDTO());
+            ViewBag.Usuario = HttpContext.Session.GetString("NombreUsuario");
+
+            return View("Crear", new CompraConDetallesDTO());
         }
 
 
@@ -80,7 +83,24 @@ namespace InventoryFinal.Controllers
                 ViewBag.Productos = productos ?? new List<Producto>();
                 ViewBag.Clientes = clientes ?? new List<Cliente>();
 
-                return View("Views/Administrador/Compra/Crear.cshtml", compraDto);
+                return View("Crear", compraDto);
+            }
+
+            var usuario = HttpContext.Session.GetString("NombreUsuario");
+            compraDto.NombreUsuario = usuario;
+
+            List<DetalleCompraDTO> detalles = compraDto.DetalleCompras;
+
+            if (compraDto.DetalleCompras != null && compraDto.DetalleCompras.Count > 0)
+            {
+                foreach (var detalle in compraDto.DetalleCompras)
+                {
+                    // Calculamos el subtotal de cada producto
+                    detalle.SubTotal = detalle.Unidades * detalle.PrecioUnitario;
+                }
+
+                // Establecemos el total de la compra
+                compraDto.Total = compraDto.DetalleCompras.Sum(d => d.SubTotal);
             }
 
             var (exito, mensaje, nuevaCompra) = await compraService.CrearCompraDTO(compraDto);
@@ -94,10 +114,10 @@ namespace InventoryFinal.Controllers
                 ViewBag.Clientes = clientes ?? new List<Cliente>();
 
                 ModelState.AddModelError("", mensaje);
-                return View("Views/Administrador/Compra/Crear.cshtml", compraDto);
+                return View("Crear", compraDto);
             }
 
-            return RedirectToAction("Views/Administrador/Compra/Detalles.cshtml", new { id = nuevaCompra.Id });
+            return View("Detalles", compraDto);
         }
 
         [HttpGet]
@@ -128,7 +148,7 @@ namespace InventoryFinal.Controllers
             ViewBag.Productos = productos;
             ViewBag.Clientes = clientes;
 
-            return View("Views/Administrador/Compra/Editar.cshtml", compra);
+            return View("Editar", compra);
         }
 
         [HttpPost]
@@ -147,11 +167,25 @@ namespace InventoryFinal.Controllers
                 ViewBag.Productos = productos ?? new List<Producto>();
                 ViewBag.Clientes = clientes ?? new List<Cliente>();
 
-                return View("Views/Administrador/Compra/Editar.cshtml", dto);
+                return View("Editar", dto);
+            }
+
+            dto.NombreUsuario = HttpContext.Session.GetString("NombreUsuario");
+
+            if (dto.DetalleCompras != null && dto.DetalleCompras.Count > 0)
+            {
+                foreach (var detalle in dto.DetalleCompras)
+                {
+                    // Calculamos el subtotal de cada producto
+                    detalle.SubTotal = detalle.Unidades * detalle.PrecioUnitario;
+                }
+
+                // Establecemos el total de la compra
+                dto.Total = dto.DetalleCompras.Sum(d => d.SubTotal);
             }
 
             await compraService.ActualizarCompra(dto);
-            return RedirectToAction("Views/Administrador/Compra/Detalles.cshtml", new { id = dto.Id });
+            return RedirectToAction("Detalles", new { id = dto.Id });
         }
 
         [HttpGet]
@@ -164,7 +198,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/Compra/Eliminar.cshtml", compra);
+            return View("Eliminar", compra);
         }
 
         [HttpPost]
@@ -173,7 +207,7 @@ namespace InventoryFinal.Controllers
         {
             await compraService.EliminarCompra(id);
 
-            return RedirectToAction("Views/Administrador/Compra/Index.cshtml");
+            return RedirectToAction("Index");
         }
     }
 }

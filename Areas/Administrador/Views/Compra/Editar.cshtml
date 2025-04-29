@@ -1,4 +1,5 @@
 ﻿@using InventoryFinal.DTO
+@using InventoryFinal.Models
 @using Newtonsoft.Json
 @model CompraConDetallesDTO
 @{
@@ -41,9 +42,20 @@
     </div>
 
     <hr />
-    <div id="detalles-container">
-
-    </div>
+    <table class="table" id="tabla-detalles">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Unidades</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="detalles-cuerpo">
+            
+        </tbody>
+    </table>
     <button type="button" class="btn btn-primary" onclick="agregarProducto()">Agregar producto</button>
 
     <hr />
@@ -62,41 +74,37 @@
         let index = 0;
 
         function agregarProducto(nombre = "", cantidad = 1, precio = 0) {
-            console.log(nombre);
-            const container = document.getElementById("detalles-container");
+            const tbody = document.getElementById("detalles-cuerpo");
 
-            const div = document.createElement("div");
-            div.classList.add("mb-3");
-            div.innerHTML = `
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Producto</label>
-                        <select name="DetalleCompraDTO[${index}].NombreProducto" class="form-control" onchange="actualizarPrecio(${index})">
-                            ${productos.map(p => `<option value="${p.Nombre}" ${p.Nombre === nombre ? 'selected' : ''}>${p.Nombre}</option>`).join("")}
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Cantidad</label>
-                        <input name="DetalleCompraDTO[${index}].Unidades" type="number" class="form-control" value="${cantidad}" min="1" onchange="calcularSubtotal(${index})"/>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Precio</label>
-                        <input name="DetalleCompraDTO[${index}].PrecioUnitario" type="number" readonly class="form-control" value="${precio}" onchange="calcularSubtotal(${index})"/>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Subtotal</label>
-                        <input type="text" id="subtotal-${index}" readonly class="form-control"/>
-                    </div>
-                </div>
+            const tr = document.createElement("tr");
+            tr.id = `producto-${index}`;
+            tr.innerHTML = `
+                <td>
+                    <select name="DetalleCompras[${index}].NombreProducto" class="form-control" onchange="actualizarPrecio(${index})">
+                        ${productos.map(p => `<option value="${p.Nombre}" ${p.Nombre === nombre ? 'selected' : ''}>${p.Nombre}</option>`).join("")}
+                    </select>
+                </td>
+                <td>
+                    <input name="DetalleCompras[${index}].Unidades" type="number" class="form-control" value="${cantidad}" min="1" onchange="calcularSubtotal(${index})"/>
+                </td>
+                <td>
+                    <input name="DetalleCompras[${index}].PrecioUnitario" type="number" readonly class="form-control" value="${precio}" onchange="calcularSubtotal(${index})"/>
+                </td>
+                <td>
+                    <input type="text" id="subtotal-${index}" readonly class="form-control"/>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="eliminarProducto(${index})">Eliminar</button>
+                </td>
             `;
-            container.appendChild(div);
+            tbody.appendChild(tr);
             actualizarPrecio(index);
             index++;
         }
 
         function actualizarPrecio(i) {
-            const productoSelect = document.querySelector(`[name='DetalleCompraDTO[${i}].NombreProducto']`);
-            const precioInput = document.querySelector(`[name='DetalleCompraDTO[${i}].PrecioUnitario']`);
+            const productoSelect = document.querySelector(`[name='DetalleCompras[${i}].NombreProducto']`);
+            const precioInput = document.querySelector(`[name='DetalleCompras[${i}].PrecioUnitario']`);
             const producto = productos.find(p => p.Nombre === productoSelect.value);
             if (producto) {
                 precioInput.value = producto.Precio;
@@ -105,8 +113,8 @@
         }
 
         function calcularSubtotal(i) {
-            const unidades = parseFloat(document.querySelector(`[name='DetalleCompraDTO[${i}].Unidades']`).value) || 0;
-            const precio = parseFloat(document.querySelector(`[name='DetalleCompraDTO[${i}].PrecioUnitario']`).value) || 0;
+            const unidades = parseFloat(document.querySelector(`[name='DetalleCompras[${i}].Unidades']`).value) || 0;
+            const precio = parseFloat(document.querySelector(`[name='DetalleCompras[${i}].PrecioUnitario']`).value) || 0;
             const subtotal = unidades * precio;
             document.getElementById(`subtotal-${i}`).value = subtotal.toFixed(2);
             calcularTotal();
@@ -114,11 +122,18 @@
 
         function calcularTotal() {
             let total = 0;
-            for (let j = 0; j < index; j++) {
-                const subtotal = parseFloat(document.getElementById(`subtotal-${j}`)?.value) || 0;
-                total += subtotal;
-            }
+            document.querySelectorAll("input[id^='subtotal-']").forEach(input => {
+                total += parseFloat(input.value) || 0;
+            });
             document.getElementById("totalCompra").value = total.toFixed(2);
+        }
+
+        function eliminarProducto(i) {
+            const fila = document.getElementById(`producto-${i}`);
+            if (fila) {
+                fila.remove();
+                calcularTotal();
+            }
         }
 
         @foreach (var detalle in Model.DetalleCompras)

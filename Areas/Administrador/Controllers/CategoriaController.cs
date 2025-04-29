@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryFinal.Controllers
 {
+    [Area("Administrador")]
     public class CategoriaController : Controller
     {
         private readonly GenericoService<Categoria> genericoService;
@@ -22,10 +23,10 @@ namespace InventoryFinal.Controllers
             if (!exito)
             {
                 TempData["Error"] = mensaje;
-                return View("Views/Administrador/Usuario/Index.cshtml", new List<Categoria>());
+                return View("Index", new List<Categoria>());
             }
 
-            return View("Views/Administrador/Categoria/Index.cshtml", categorias);
+            return View("Index", categorias);
         }
 
         // Obtener Detalle Categoría por id
@@ -38,14 +39,14 @@ namespace InventoryFinal.Controllers
             {
                 return NotFound();
             }
-            return View("Views/Administrador/Categoria/Detalles.cshtml", categoria);
+            return View("Detalles", categoria);
         }
 
         // Crear Categoría (Abre el formulario para crear)
         [HttpGet]
         public IActionResult Crear()
         {
-            return View("Views/Administrador/Categoria/Crear.cshtml");
+            return View("Crear");
         }
 
         // Enviar formulario
@@ -56,7 +57,7 @@ namespace InventoryFinal.Controllers
             if (!ModelState.IsValid)
             {
                 // Recarga la vista mostrando el error
-                return View("Views/Administrador/Categoria/Crear.cshtml", categoria);
+                return View("Crear", categoria);
             }
             
             var (exito, mensaje, nuevaCategoria) = await genericoService.Crear(categoria);
@@ -64,11 +65,10 @@ namespace InventoryFinal.Controllers
             if (!exito)
             {
                 ModelState.AddModelError("", mensaje);
-                return View("Views/Administrador/Categoria/Crear.cshtml", categoria);
+                return View("Crear", categoria);
             }
 
-            // Se redirige al Index
-            return RedirectToAction("Views/Administrador/Categoria/Detalles.cshtml", new { id = nuevaCategoria.Id });
+            return View("Detalles", new { id = nuevaCategoria.Id });
         }
 
         [HttpGet]
@@ -81,7 +81,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/Categoria/Editar.cshtml", categoria);
+            return View("Editar", categoria);
         }
 
         [HttpPost]
@@ -95,7 +95,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View("Views/Administrador/Categoria/Editar.cshtml", categoria);
+                return View("Editar", categoria);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(categoria);
@@ -104,10 +104,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View("Views/Administrador/Categoria/Editar.cshtml", categoria);
+                return View("Editar", categoria);
             }
 
-            return RedirectToAction("Views/Administrador/Categoria/Detalles.cshtml", new { id = categoria.Id});
+            return RedirectToAction("Detalles", new { id = categoria.Id});
         }
 
         [HttpGet]
@@ -120,7 +120,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/Categoria/Eliminar.cshtml", categoria);
+            return View("Eliminar", categoria);
         }
 
         [HttpPost]
@@ -134,7 +134,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Views/Administrador/Categoria/Index.cshtml");
+            return RedirectToAction("Index");
         }
     }
 }

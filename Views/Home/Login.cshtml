@@ -1,8 +1,8 @@
-﻿@page "/login"
-@model Inventory.Views.Session.LoginModel
+﻿@model dynamic
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -65,7 +65,7 @@
         </form>
 
         <p class="text-center text-sm text-gray-600 mt-4">
-            ¿Eres nuevo aquí? <a href="@Url.Action("Register", "Session")" class="text-purple-600 font-medium"> Regístrate 🚀</a>
+            ¿Eres nuevo aquí? <a href="@Url.Action("Register", "Home")" class="text-purple-600 font-medium"> Regístrate 🚀</a>
         </p>
     </div>
 </body>

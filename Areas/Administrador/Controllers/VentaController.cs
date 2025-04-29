@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InventoryFinal.Controllers
 {
+    [Area("Administrador")]
     public class VentaController : Controller
     {
         private readonly GenericoService<Venta> genericoService;
@@ -31,10 +32,10 @@ namespace InventoryFinal.Controllers
             {
                 TempData["Error"] = mensaje;
 
-                return View("Views/Administrador/Venta/Index.cshtml", new List<Venta>());
+                return View("Index", new List<Venta>());
             }
 
-            return View("Views/Administrador/Venta/Index.cshtml", ventas);
+            return View("Index", ventas);
         }
 
         [HttpGet]
@@ -47,7 +48,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/Venta/Detalles.cshtml", ventas);
+            return View("Detalles", ventas);
         }
 
         [HttpGet]
@@ -58,7 +59,7 @@ namespace InventoryFinal.Controllers
             if (!exitoU)
             {
                 TempData["Error"] = mensajeU;
-                return View("Views/Administrador/Venta/Crear.cshtml");
+                return View("Crear");
             }
             // Dropdown usuarios (valor = Id, texto = Nombre)
             ViewBag.Usuarios = new SelectList(usuarios, "Id", "Nombre");
@@ -68,12 +69,12 @@ namespace InventoryFinal.Controllers
             if (!exitoC)
             {
                 TempData["Error"] = mensajeC;
-                return View("Views/Administrador/Venta/Crear.cshtml");
+                return View("Crear");
             }
             // Dropdown clientes (valor = id, texto = nombre)
             ViewBag.Clientes = new SelectList(clientes, "Id", "Nombre");
 
-            return View("Views/Administrador/Venta/Crear.cshtml");
+            return View("Crear");
         }
 
         [HttpPost]
@@ -82,7 +83,7 @@ namespace InventoryFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Views/Administrador/Venta/Crear.cshtml", venta);
+                return View("Crear", venta);
             }
 
             var (exito, mensaje, nuevaVenta) = await genericoService.Crear(venta);
@@ -91,10 +92,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View("Views/Administrador/Venta/Crear.cshtml", venta);
+                return View("Crear", venta);
             }
 
-            return RedirectToAction("Views/Administrador/Venta/Detalles.cshtml", new { id = nuevaVenta.Id });
+            return RedirectToAction("Detalles", new { id = nuevaVenta.Id });
         }
 
         [HttpGet]
@@ -105,7 +106,7 @@ namespace InventoryFinal.Controllers
             if (!exitoU)
             {
                 TempData["Error"] = mensajeU;
-                return View("Views/Administrador/Venta/Editar.cshtml");
+                return View();
             }
             // Dropdown usuarios (valor = id, texto = nombre)
             ViewBag.Usuarios = new SelectList(usuarios, "Id", "Nombre");
@@ -115,7 +116,7 @@ namespace InventoryFinal.Controllers
             if (!exitoC)
             {
                 TempData["Error"] = mensajeC;
-                return View("Views/Administrador/Venta/Editar.cshtml");
+                return View();
             }
             // Dropdown clientes (valor = id, texto = nombre)
             ViewBag.Clientes = new SelectList(clientes, "Id", "Nombre");
@@ -128,7 +129,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/Venta/Editar.cshtml", venta);
+            return View("Editar", venta);
         }
 
         [HttpPost]
@@ -142,7 +143,7 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View("Views/Administrador/Venta/Editar.cshtml", venta);
+                return View("Editar", venta);
             }
 
             var (exito, mensaje) = await genericoService.Actualizar(venta);
@@ -151,10 +152,10 @@ namespace InventoryFinal.Controllers
             {
                 ModelState.AddModelError("", mensaje);
 
-                return View("Views/Administrador/Venta/Editar.cshtml", venta);
+                return View("Editar", venta);
             }
 
-            return RedirectToAction("Views/Administrador/Venta/Detalles.cshtml", new { id = venta.Id });
+            return RedirectToAction("Detalles", new { id = venta.Id });
         }
 
         [HttpGet]
@@ -167,7 +168,7 @@ namespace InventoryFinal.Controllers
                 return NotFound();
             }
 
-            return View("Views/Administrador/Venta/Eliminar.cshtml", venta);
+            return View("Eliminar", venta);
         }
 
         [HttpPost]
@@ -181,7 +182,7 @@ namespace InventoryFinal.Controllers
                 TempData["Error"] = mensaje;
             }
 
-            return RedirectToAction("Views/Administrador/Venta/Index.cshtml");
+            return RedirectToAction("Index");
         }
     }
 }

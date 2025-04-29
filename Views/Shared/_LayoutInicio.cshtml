@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inven-Tory</title>
+    <link rel="icon" href="@Url.Content("~/favicon.png")" sizes="192x192" type="image/png">
+
+
+</head>
+<body>
+    <!-- Contenido Principal -->
+    <div class="content">
+        @RenderBody()
+    </div>
+</body>
+
+@await RenderSectionAsync("Scripts", required: false)
+</html>

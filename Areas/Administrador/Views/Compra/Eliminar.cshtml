@@ -1,10 +1,10 @@
 ﻿@using InventoryFinal.DTO
 @model CompraConDetallesDTO
 
-<h2>Eliminar Compra</h2>
-<p>¿Seguro que quieres eliminar esta compra?</p>
+<h2>¿Estás seguro que quieres eliminar esta compra?</h2>
 
 <p><strong>Fecha:</strong> @Model.FechaCompra.ToString("dd/MM/yyyy HH:mm")</p>
+<p><strong>Usuario:</strong> @Model.NombreUsuario</p>
 <p><strong>Total:</strong> @Model.Total €</p>
 
 <form asp-action="EliminarConfirmado" method="post">
