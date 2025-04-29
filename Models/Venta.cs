@@ -17,6 +17,18 @@ namespace InventoryFinal.Models
         [DataType(DataType.Currency)]
         public decimal Total { get; set; }
 
+        public void CalcularTotal()
+        {
+            if (DetalleVentas != null)
+            {
+                Total = DetalleVentas.Sum(dc => dc.Total);
+            }
+            else
+            {
+                Total = 0;
+            }
+        }
+
         // Relaciones //
         public int? ClienteId { get; set; }
         public Cliente? Cliente { get; set; }

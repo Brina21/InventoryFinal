@@ -9,7 +9,6 @@ namespace InventoryFinal.Service
 {
     public class CompraService
     {
-        private readonly ApplicationDbContext _context;
         private readonly CompraRepository _compraRepository;
 
         public CompraService(CompraRepository compraRepository)
@@ -45,8 +44,6 @@ namespace InventoryFinal.Service
                 return (false, $"Error al guardar la compra: {ex.Message}", null);
             }
         }
-
-
 
         public async Task ActualizarCompra(CompraConDetallesDTO dto)
         {

@@ -30,7 +30,7 @@ namespace InventoryFinal.Repository
                 if (compra == null)
                 {
                     EscribirFichero.Escribir("No se encontró la Compra con el id: " + id);
-                    return null;
+                    return new CompraConDetallesDTO();
                 }
 
                 return new CompraConDetallesDTO
@@ -191,10 +191,6 @@ namespace InventoryFinal.Repository
                     return;
                 }
 
-                // Eliminar los detalles de la compra
-                _context.DetalleCompras.RemoveRange(compra.DetalleCompras);
-
-                // Eliminar la compra
                 _context.Compras.Remove(compra);
                 await _context.SaveChangesAsync();
             }

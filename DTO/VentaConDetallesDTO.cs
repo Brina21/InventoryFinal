@@ -19,6 +19,5 @@
         public int Unidades { get; set; }
         public decimal PrecioUnitario { get; set; } = 0;
         public decimal SubTotal { get; set; } = 0;
-
     }
 }

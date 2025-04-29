@@ -26,7 +26,7 @@ namespace InventoryFinal.Models
         public int VentaId { get; set; }
         public Venta? Venta { get; set; }
 
-        public int ProductoId { get; set; }
+        public int? ProductoId { get; set; }
         public Producto? Producto { get; set; }
     }
 }

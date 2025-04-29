@@ -1,4 +1,5 @@
-﻿using InventoryFinal.EscribirLogsFichero;
+﻿using InventoryFinal.DTO;
+using InventoryFinal.EscribirLogsFichero;
 using InventoryFinal.Models;
 using InventoryFinal.Repository;
 using Microsoft.IdentityModel.Tokens;
@@ -14,30 +15,42 @@ namespace InventoryFinal.Service
             this.ventaRepository = ventaRepository;
         }
 
-        public async Task<(bool exito, string mensaje, Venta? venta)> ObtenerVentaPorId(int id)
+        public async Task<List<VentaConDetallesDTO>> ObtenerTodasVentas()
         {
-            var entidad = await ventaRepository.GetByVentaId(id);
-
-            if (entidad == null)
-            {
-                EscribirFichero.Escribir($"No se ha podido obtener la Venta con id{entidad?.Id}");
-                return (false, $"No se ha podido obtener la Venta con id{entidad?.Id}", null);
-            }
-
-            return (true, $"Se ha obtenido la Venta con id{entidad?.Id}", entidad);
+            return await ventaRepository.GetAllVentasDTO();
         }
 
-        public async Task<(bool exito, string mensaje, List<Venta> ventas)> ObtenerTodasVentas()
+        public async Task<VentaConDetallesDTO?> ObtenerVentaPorId(int id)
         {
-            List<Venta> resultado = await ventaRepository.GetAllVentas();
+            return await ventaRepository.GetVentaDTOById(id);
+        }
 
-            if (!resultado.IsNullOrEmpty())
+        public async Task<(bool exito, string mensaje, Venta nuevaVenta)> CrearVentaDTO(VentaConDetallesDTO dto)
+        {
+            try
             {
-                return (true, "Ventas obtenidas correctamente", resultado);
+                var nuevaVenta = await ventaRepository.InsertarVentaConDetalle(dto);
+                if (nuevaVenta == null)
+                {
+                    return (false, "No se pudo insertar la venta.", null);
+                }
+                return (true, "Venta registrada correctamente.", nuevaVenta);
             }
+            catch (Exception ex)
+            {
+                EscribirFichero.Escribir($"Error al guardar la venta: {ex.Message}");
+                return (false, $"Error al guardar la venta: {ex.Message}", null);
+            }
+        }
 
-            EscribirFichero.Escribir("No se han obtenido las ventas");
-            return (false, "No se encontraron ventas", new List<Venta>());
+        public async Task ActualizarVenta(VentaConDetallesDTO dto)
+        {
+            await ventaRepository.ActualizarVenta(dto);
+        }
+
+        public async Task EliminarVenta(int id)
+        {
+            await ventaRepository.EliminarVenta(id);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace InventoryFinal.Controllers
         [HttpGet]
         public async Task<IActionResult> Crear()
         {
-            var (exitoProductos, _, productos) = await productoService.ObtenerTodosProductos();
+            var (exitoProductos, mensajeProductos, productos) = await productoService.ObtenerTodosProductos();
             var (exitoClientes, mensajeClientes, clientes) = await clienteService.ObtenerTodos();
 
             if (!exitoClientes || clientes == null)
@@ -88,8 +88,6 @@ namespace InventoryFinal.Controllers
 
             var usuario = HttpContext.Session.GetString("NombreUsuario");
             compraDto.NombreUsuario = usuario;
-
-            List<DetalleCompraDTO> detalles = compraDto.DetalleCompras;
 
             if (compraDto.DetalleCompras != null && compraDto.DetalleCompras.Count > 0)
             {
