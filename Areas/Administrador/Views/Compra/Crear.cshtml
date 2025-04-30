@@ -126,11 +126,13 @@
         function calcularTotal() {
             let total = 0;
             for (let j = 0; j < index; j++) {
-                const subtotal = parseFloat(document.getElementById(`subtotal-${j}`)) || 0;
+                const subtotalInput = document.getElementById(`subtotal-${j}`);
+                const subtotal = subtotalInput ? parseFloat(subtotalInput.value) || 0 : 0;
                 total += subtotal;
             }
             document.getElementById("totalCompra").value = total.toFixed(2);
         }
+
 
         function eliminarProducto(boton) {
             const productoDiv = boton.closest('.producto-item');

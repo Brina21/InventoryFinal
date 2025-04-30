@@ -72,16 +72,20 @@
     <script>
         const productos = @Html.Raw(JsonConvert.SerializeObject(productos, settings));
         let index = 0;
+        let productosSeleccionados = [];
 
         function agregarProducto(nombre = "", cantidad = 1, precio = 0) {
             const tbody = document.getElementById("detalles-cuerpo");
 
             const tr = document.createElement("tr");
             tr.id = `producto-${index}`;
+            tr.classList.add("producto-item");
             tr.innerHTML = `
                 <td>
                     <select name="DetalleCompras[${index}].NombreProducto" class="form-control" onchange="actualizarPrecio(${index})">
-                        ${productos.map(p => `<option value="${p.Nombre}" ${p.Nombre === nombre ? 'selected' : ''}>${p.Nombre}</option>`).join("")}
+                        ${productos.map(p => `<option value="${p.Nombre}" data-stock="${p.Stock}" ${p.Nombre === nombre ? 'selected' : ''}>
+                            ${p.Nombre} (Stock: ${p.Stock})
+                        </option>`).join("")}
                     </select>
                 </td>
                 <td>
@@ -93,13 +97,20 @@
                 <td>
                     <input type="text" id="subtotal-${index}" readonly class="form-control"/>
                 </td>
-                <td>
-                    <button type="button" class="btn btn-danger" onclick="eliminarProducto(${index})">Eliminar</button>
+                <td class="col-md-2 d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" onclick="eliminarProducto(this)">Eliminar</button>
                 </td>
             `;
             tbody.appendChild(tr);
+            calcularTotal();
             actualizarPrecio(index);
             index++;
+
+            productosSeleccionados.push({
+                Nombre: nombre,
+                Cantidad: cantidad,
+                Precio: precio
+            });
         }
 
         function actualizarPrecio(i) {
@@ -128,13 +139,41 @@
             document.getElementById("totalCompra").value = total.toFixed(2);
         }
 
-        function eliminarProducto(i) {
-            const fila = document.getElementById(`producto-${i}`);
+        function eliminarProducto(boton) {
+            const fila = boton.closest('tr');
             if (fila) {
                 fila.remove();
+                reindexarProductos();
                 calcularTotal();
             }
         }
+
+        function reindexarProductos() {
+            const items = document.querySelectorAll('.producto-item');
+            index = 0; // Reiniciamos índice
+            items.forEach((item, i) => {
+                item.setAttribute('data-index', i);
+                item.querySelectorAll('select, input').forEach(input => {
+                    if (input.name.includes("NombreProducto")) {
+                        input.name = `DetalleCompras[${i}].NombreProducto`;
+                        input.setAttribute("onchange", `actualizarPrecio(${i})`);
+                    }
+                    if (input.name.includes("Unidades")) {
+                        input.name = `DetalleCompras[${i}].Unidades`;
+                        input.setAttribute("onchange", `calcularSubtotal(${i})`);
+                    }
+                    if (input.name.includes("PrecioUnitario")) {
+                        input.name = `DetalleCompras[${i}].PrecioUnitario`;
+                        input.setAttribute("onchange", `calcularSubtotal(${i})`);
+                    }
+                    if (input.id.includes("subtotal-")) {
+                        input.id = `subtotal-${i}`;
+                    }
+                });
+                index++;
+            });
+        }
+
 
         @foreach (var detalle in Model.DetalleCompras)
         {

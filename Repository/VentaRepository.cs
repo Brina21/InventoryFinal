@@ -106,6 +106,17 @@ namespace InventoryFinal.Repository
                         PrecioUnitario = detalle.PrecioUnitario,
                         Total = detalle.SubTotal
                     };
+
+                    // Agregar movimiento de stock
+                    var movimientoStock = new MovimientoStock
+                    {
+                        ProductoId = detalleVenta.Id,
+                        Cantidad = -detalleVenta.Cantidad,
+                        TipoMovimiento = Movimiento.Salida,
+                        FechaMovimiento = DateTime.Now,
+                        VentaId = venta.Id,
+                        UsuarioId = venta.UsuarioId
+                    };
                 }
 
                 venta.CalcularTotal();
@@ -146,6 +157,22 @@ namespace InventoryFinal.Repository
                 venta.ClienteId = _context.Clientes.FirstOrDefault(v => v.Nombre == dto.NombreCliente)?.Id;
                 venta.UsuarioId = _context.Usuarios.FirstOrDefault(v => v.Nombre == dto.NombreUsuario)?.Id ?? 0;
 
+                // Recuperar y revertir los movimientos de stock
+                var movimientos = _context.MovimientoStocks
+                    .Where(m => m.VentaId == venta.Id)
+                    .ToList();
+                foreach (var movimiento in movimientos)
+                {
+                    var producto = _context.Productos.FirstOrDefault(p => p.Id == movimiento.ProductoId);
+                    if (producto != null)
+                    {
+                        producto.Stock -= movimiento.Cantidad;
+                        _context.Productos.Update(producto);
+                    }
+                }
+                // Eliminar los movimientos de stock asociados a la venta
+                _context.MovimientoStocks.RemoveRange(movimientos);
+
                 // Eliminar los detalles existentes
                 _context.DetalleVentas.RemoveRange(venta.DetalleVentas);
 
@@ -169,31 +196,6 @@ namespace InventoryFinal.Repository
             catch (Exception ex)
             {
                 EscribirFichero.Escribir("Error al actualizar la Venta: " + ex.Message);
-                throw;
-            }
-        }
-
-        // Eliminar Venta
-        public async Task EliminarVenta(int id)
-        {
-            try
-            {
-                var venta = await _context.Ventas
-                    .Include(v => v.DetalleVentas)
-                    .FirstOrDefaultAsync(v => v.Id == id);
-
-                if (venta == null)
-                {
-                    EscribirFichero.Escribir("No se encontró la Venta con el id: " + id);
-                    return;
-                }
-
-                _context.Ventas.Remove(venta);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                EscribirFichero.Escribir("Error al eliminar la Venta: " + ex.Message);
                 throw;
             }
         }

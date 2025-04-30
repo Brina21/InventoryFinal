@@ -47,10 +47,5 @@ namespace InventoryFinal.Service
         {
             await ventaRepository.ActualizarVenta(dto);
         }
-
-        public async Task EliminarVenta(int id)
-        {
-            await ventaRepository.EliminarVenta(id);
-        }
     }
 }

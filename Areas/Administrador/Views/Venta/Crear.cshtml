@@ -1,48 +1,185 @@
-﻿@model InventoryFinal.Models.Venta
-
+﻿@using InventoryFinal.DTO
+@using InventoryFinal.Models
+@using Newtonsoft.Json
+@model VentaConDetallesDTO
 @{
-    ViewData["Title"] = "Crear";
+    ViewBag.Title = "Crear Venta";
+    var productos = ViewBag.Productos as List<Producto> ?? new List<Producto>();
+    var clientes = ViewBag.Clientes as List<Cliente> ?? new List<Cliente>();
+
+    var usuario = ViewBag.Usuario;
+
+    var settings = new JsonSerializerSettings
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+    };
 }
 
-<h1>Crear Venta</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Crear">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FechaVenta" class="control-label">Fecha Venta</label>
-                <input asp-for="FechaVenta" class="form-control" />
-                <span asp-validation-for="FechaVenta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Total" class="control-label"></label>
-                <input asp-for="Total" class="form-control" type="number" step="0.01" />
-                <span asp-validation-for="Total" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClienteId" class="control-label">Cliente</label>
-                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.Clientes">
-                    <option value="null">Ninguno</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UsuarioId" class="control-label">Usuario</label>
-                <select asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.Usuarios">
-                    <option value="">Elige un usuario</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<h2>Crear Venta</h2>
 
-<div>
-    <a asp-action="Index">Cancelar</a>
-</div>
+<form asp-action="Crear" method="post">
+    <div>
+        <label>Usuario</label>
+        <input type="text" value="@usuario" readonly class="form-control" />
+    </div>
+
+    <div>
+        <label>Fecha</label>
+        <input type="text" value="@DateTime.Now.ToString("dd-MM-yyyy HH:mm")" readonly class="form-control" />
+    </div>
+
+    <div>
+        <label>Cliente</label>
+        <select asp-for="NombreCliente" class="form-control">
+            <option>-- Elige un Cliente --</option>
+            @foreach (var cliente in clientes)
+            {
+                <option value="@cliente.Nombre">@cliente.Nombre</option>
+            }
+        </select>
+    </div>
+
+    <hr />
+    <div id="detalles-container">
+    </div>
+    <button type="button" class="btn btn-primary" onclick="agregarProducto()">Agregar producto</button>
+
+    <hr />
+    <div>
+        <label>Total:</label>
+        <input type="text" id="totalCompra" name="TotalCompra" readonly class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Compra</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        const productos = @Html.Raw(JsonConvert.SerializeObject(productos, settings));
+        let index = 0;
+        let productosSeleccionados = [];
+
+        function agregarProducto(nombre = "", cantidad = 1, precio = 0) {
+            const container = document.getElementById("detalles-container");
+
+            const div = document.createElement("div");
+            div.classList.add("mb-3", "producto-item")
+            div.classList.add("mb-3");
+            div.innerHTML = `
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Producto</label>
+                        <select name="DetalleVentas[${index}].NombreProducto" class="form-control" onchange="actualizarPrecio(${index})">
+                            ${productos.map(p => `<option value="${p.Nombre}" data-stock="${p.Stock}" ${p.Nombre === nombre ? 'selected' : ''}>
+                                ${p.Nombre} (Stock: ${p.Stock})
+                            </option>`).join("")}
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Cantidad</label>
+                        <input name="DetalleVentas[${index}].Unidades" type="number" class="form-control" value="${cantidad}" min="1" onchange="calcularSubtotal(${index})"/>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Precio</label>
+                        <input name="DetalleVentas[${index}].PrecioUnitario" type="number" readonly class="form-control" value="${precio}" onchange="calcularSubtotal(${index})"/>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Subtotal</label>
+                        <input type="text" id="subtotal-${index}" readonly class="form-control"/>
+                    </div>
+
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="button" class="btn btn-danger" onclick="eliminarProducto(this)">Eliminar</button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+            calcularTotal();
+            actualizarPrecio(index);
+            index++;
+
+            productosSeleccionados.push({
+                Nombre: nombre,
+                Cantidad: cantidad,
+                Precio: precio
+            });
+        }
+
+        function actualizarPrecio(i) {
+            const productoSelect = document.querySelector(`[name='DetalleVentas[${i}].NombreProducto']`);
+            const precioInput = document.querySelector(`[name='DetalleVentas[${i}].PrecioUnitario']`);
+
+            const cantidadInput = document.querySelector(`[name='DetalleVentas[${i}].Unidades']`);
+            const stock = parseInt(productoSelect.options[productoSelect.selectedIndex].getAttribute("data-stock"));
+            const cantidad = parseInt(cantidadInput.value);
+
+            if (cantidad > stock) {
+                alert(`No hay suficiente stock. Stock disponible: ${stock}`);
+                cantidadInput.value = stock;
+            }
+
+            const producto = productos.find(p => p.Nombre === productoSelect.value);
+            if (producto) {
+                precioInput.value = producto.Precio;
+                calcularSubtotal(i);
+            }
+        }
+
+        function calcularSubtotal(i) {
+            const unidades = parseFloat(document.querySelector(`[name='DetalleVentas[${i}].Unidades']`).value) || 0;
+            const precio = parseFloat(document.querySelector(`[name='DetalleVentas[${i}].PrecioUnitario']`).value) || 0;
+            const subtotal = unidades * precio;
+            document.getElementById(`subtotal-${i}`).value = subtotal.toFixed(2);
+            calcularTotal();
+        }
+
+        function calcularTotal() {
+            let total = 0;
+            for (let j = 0; j < index; j++) {
+                const subtotalInput = document.getElementById(`subtotal-${j}`);
+                const subtotal = subtotalInput ? parseFloat(subtotalInput.value) || 0 : 0;
+                total += subtotal;
+            }
+            document.getElementById("totalVenta").value = total.toFixed(2);
+        }
+
+
+        function eliminarProducto(boton) {
+            const productoDiv = boton.closest('.producto-item');
+            if (productoDiv) {
+                productoDiv.remove();
+                reindexarProductos();
+                calcularTotal();
+            }
+        }
+
+
+        function reindexarProductos() {
+            const items = document.querySelectorAll('.producto-item');
+            index = 0; // Reiniciamos índice
+            items.forEach((item, i) => {
+                item.setAttribute('data-index', i);
+                item.querySelectorAll('select, input').forEach(input => {
+                    if (input.name.includes("NombreProducto")) {
+                        input.name = `DetalleVentas[${i}].NombreProducto`;
+                        input.setAttribute("onchange", `actualizarPrecio(${i})`);
+                    }
+                    if (input.name.includes("Unidades")) {
+                        input.name = `DetalleVentas[${i}].Unidades`;
+                        input.setAttribute("onchange", `calcularSubtotal(${i})`);
+                    }
+                    if (input.name.includes("PrecioUnitario")) {
+                        input.name = `DetalleVentas[${i}].PrecioUnitario`;
+                        input.setAttribute("onchange", `calcularSubtotal(${i})`);
+                    }
+                    if (input.id.includes("subtotal-")) {
+                        input.id = `subtotal-${i}`;
+                    }
+                });
+                index++;
+            });
+        }
+
+    </script>
 }

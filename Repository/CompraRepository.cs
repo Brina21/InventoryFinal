@@ -107,6 +107,17 @@ namespace InventoryFinal.Repository
                         PrecioUnitario = detalle.PrecioUnitario,
                         Total = detalle.SubTotal
                     });
+
+                    // Agregar movimiento de stock
+                    var movimientoStock = new MovimientoStock
+                    {
+                        ProductoId = detalle.Id,
+                        Cantidad = detalle.Unidades,
+                        TipoMovimiento = Movimiento.Entrada,
+                        FechaMovimiento = DateTime.Now,
+                        CompraId = compra.Id,
+                        UsuarioId = compra.UsuarioId
+                    };
                 }
 
                 compra.CalcularTotal();
@@ -147,6 +158,22 @@ namespace InventoryFinal.Repository
                 compra.ClienteId = _context.Clientes.FirstOrDefault(c => c.Nombre == dto.NombreCliente)?.Id;
                 compra.UsuarioId = _context.Usuarios.FirstOrDefault(u => u.Nombre == dto.NombreUsuario)?.Id ?? 0;
 
+                // Recuperar y revertir los movimientos de stock
+                var movimientos = _context.MovimientoStocks
+                    .Where(m => m.CompraId == compra.Id)
+                    .ToList();
+                foreach (var movimiento in movimientos)
+                {
+                    var producto = await _context.Productos.FindAsync(movimiento.ProductoId);
+                    if (producto != null)
+                    {
+                        producto.Stock -= movimiento.Cantidad;
+                        _context.Productos.Update(producto);
+                    }
+                }
+                // Eliminar los movimientos de stock asociados a la compra
+                _context.MovimientoStocks.RemoveRange(movimientos);
+
                 // Eliminar los detalles existentes
                 _context.DetalleCompras.RemoveRange(compra.DetalleCompras);
 
@@ -172,31 +199,6 @@ namespace InventoryFinal.Repository
             catch (Exception ex)
             {
                 EscribirFichero.Escribir("Error al actualizar la Compra: " + ex.Message);
-                throw;
-            }
-        }
-
-        // Eliminar Compra
-        public async Task EliminarCompra(int id)
-        {
-            try
-            {
-                var compra = await _context.Compras
-                    .Include(c => c.DetalleCompras)
-                    .FirstOrDefaultAsync(c => c.Id == id);
-
-                if (compra == null)
-                {
-                    EscribirFichero.Escribir("No se encontró la Compra con el id: " + id);
-                    return;
-                }
-
-                _context.Compras.Remove(compra);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                EscribirFichero.Escribir("Error al eliminar la Compra: " + ex.Message);
                 throw;
             }
         }

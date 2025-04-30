@@ -1,50 +1,31 @@
-﻿@model IEnumerable<InventoryFinal.Models.Venta>
+﻿@using InventoryFinal.DTO
+@model List<VentaConDetallesDTO>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<h2>Ventas</h2>
 
-<h1>Ventas</h1>
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
-                Fecha Venta
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th></th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Usuario</th>
+            <th>Cliente</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaVenta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Nombre)
-            </td>
-            <td>
-                <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Detalles" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
-}
+        @foreach (var compra in Model)
+        {
+            <tr>
+                <td>@compra.FechaVenta.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@compra.Total €</td>
+                <td>@compra.NombreUsuario</td>
+                <td>@(string.IsNullOrEmpty(compra.NombreCliente) ? "Sin cliente" : compra.NombreCliente)</td>
+                <td>
+                    <a asp-action="Detalles" asp-route-id="@compra.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Editar" asp-route-id="@compra.Id" class="btn btn-warning btn-sm">Editar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-
-<p>
-    <a asp-action="Crear">Nuevo</a>
-</p>
+<a asp-action="Crear" class="btn btn-success mb-3">Nueva Venta</a>

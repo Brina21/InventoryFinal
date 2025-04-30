@@ -49,10 +49,5 @@ namespace InventoryFinal.Service
         {
             await _compraRepository.ActualizarCompra(dto);
         }
-
-        public async Task EliminarCompra(int id)
-        {
-            await _compraRepository.EliminarCompra(id);
-        }
     }
 }

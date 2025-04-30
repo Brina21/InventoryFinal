@@ -182,26 +182,5 @@ namespace InventoryFinal.Controllers
             await ventaService.ActualizarVenta(venta);
             return RedirectToAction("Detalles", new { id = venta.Id });
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Eliminar(int id)
-        {
-            var venta = await ventaService.ObtenerVentaPorId(id);
-
-            if (venta == null)
-            {
-                return NotFound();
-            }
-
-            return View("Eliminar", venta);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EliminarConfirmado(int id)
-        {
-            await ventaService.EliminarVenta(id);
-            return RedirectToAction("Index");
-        }
     }
 }

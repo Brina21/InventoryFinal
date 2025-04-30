@@ -185,27 +185,5 @@ namespace InventoryFinal.Controllers
             await compraService.ActualizarCompra(dto);
             return RedirectToAction("Detalles", new { id = dto.Id });
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Eliminar(int id)
-        {
-            var compra = await compraService.ObtenerCompraConDetallesPorId(id);
-
-            if (compra == null)
-            {
-                return NotFound();
-            }
-
-            return View("Eliminar", compra);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EliminarConfirmado(int id)
-        {
-            await compraService.EliminarCompra(id);
-
-            return RedirectToAction("Index");
-        }
     }
 }
