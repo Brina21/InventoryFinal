@@ -1,8 +1,8 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using InventoryFinal.Models;
-using Microsoft.EntityFrameworkCore;
 using InventoryFinal.Data;
+using InventoryFinal.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace InventoryFinal.Areas.Admin.Controllers
 {
@@ -72,21 +72,32 @@ namespace InventoryFinal.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(Usuario nuevoUsuario)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Usuarios.Add(nuevoUsuario);
-                await _context.SaveChangesAsync();
-
-                HttpContext.Session.SetInt32("UsuarioId", nuevoUsuario.Id);
-                HttpContext.Session.SetString("NombreUsuario", nuevoUsuario.Nombre);
-                HttpContext.Session.SetString("Rol", nuevoUsuario.Rol.ToString());
-
-                return RedirectToAction("Index", "Dashboard", new { area = "Administrador" });
+                return View(model);
             }
 
-            return View(nuevoUsuario);
+            // Crear la entidad Usuario a partir del ViewModel
+            var nuevoUsuario = new Usuario
+            {
+                Nombre = model.Nombre,
+                Email = model.Email,
+                Contrasenya = model.Contrasenya,
+                Telefono = model.Telefono,
+                Rol = model.Rol,
+                FechaCreacion = DateTime.Now
+            };
+
+            _context.Usuarios.Add(nuevoUsuario);
+            await _context.SaveChangesAsync();
+
+            HttpContext.Session.SetInt32("UsuarioId", nuevoUsuario.Id);
+            HttpContext.Session.SetString("NombreUsuario", nuevoUsuario.Nombre);
+            HttpContext.Session.SetString("Rol", nuevoUsuario.Rol.ToString());
+
+            return RedirectToAction("Index", "Dashboard", new { area = "Administrador" });
         }
     }
 }

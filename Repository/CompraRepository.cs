@@ -97,32 +97,52 @@ namespace InventoryFinal.Repository
                     DetalleCompras = new List<DetalleCompra>()
                 };
 
+                _context.Compras.Add(compra);
+                await _context.SaveChangesAsync();
+
+
+                var movimientosStock = new List<MovimientoStock>();
+
                 foreach (var detalle in dto.DetalleCompras)
                 {
-                    compra.DetalleCompras.Add(new DetalleCompra
+                    var producto = await _context.Productos.FirstOrDefaultAsync(p => p.Nombre == detalle.NombreProducto);
+                    if (producto == null)
+                    {
+                        EscribirFichero.Escribir($"Producto no encontrado: {detalle.NombreProducto}");
+                        continue; // o return null si quieres cancelar todo
+                    }
+
+                    var detalleCompra = new DetalleCompra
                     {
                         CompraId = compra.Id,
-                        ProductoId = _context.Productos.FirstOrDefault(p => p.Nombre == detalle.NombreProducto)?.Id,
+                        ProductoId = producto.Id,
                         Cantidad = detalle.Unidades,
                         PrecioUnitario = detalle.PrecioUnitario,
                         Total = detalle.SubTotal
-                    });
+                    };
 
-                    // Agregar movimiento de stock
-                    var movimientoStock = new MovimientoStock
+                    compra.DetalleCompras.Add(detalleCompra);
+
+                    // Actualizar el stock del producto
+                    producto.Stock += detalle.Unidades;
+                    _context.Productos.Update(producto);
+
+                    movimientosStock.Add(new MovimientoStock
                     {
-                        ProductoId = detalle.Id,
+                        ProductoId = producto.Id,
                         Cantidad = detalle.Unidades,
                         TipoMovimiento = Movimiento.Entrada,
                         FechaMovimiento = DateTime.Now,
                         CompraId = compra.Id,
                         UsuarioId = compra.UsuarioId
-                    };
+                    });
                 }
 
                 compra.CalcularTotal();
 
-                _context.Compras.Add(compra);
+                _context.DetalleCompras.AddRange(compra.DetalleCompras);
+                _context.MovimientoStocks.AddRange(movimientosStock);
+
                 await _context.SaveChangesAsync();
 
                 await transaction.CommitAsync();
@@ -177,15 +197,37 @@ namespace InventoryFinal.Repository
                 // Eliminar los detalles existentes
                 _context.DetalleCompras.RemoveRange(compra.DetalleCompras);
 
+                var movimientoStock = new List<MovimientoStock>();
+
                 // Añadir los nuevos detalles
                 foreach (var detalle in dto.DetalleCompras)
                 {
-                    compra.DetalleCompras.Add(new DetalleCompra
+                    var producto = _context.Productos.FirstOrDefault(p => p.Nombre == detalle.NombreProducto);
+                    if (producto == null) continue; // Por si no existe el producto
+
+                    var detalleCompra = new DetalleCompra
                     {
-                        ProductoId = _context.Productos.FirstOrDefault(p => p.Nombre == detalle.NombreProducto)?.Id,
+                        ProductoId = producto.Id,
                         Cantidad = detalle.Unidades,
                         PrecioUnitario = detalle.PrecioUnitario,
                         Total = detalle.SubTotal
+                    };
+
+                    // Actualizar stock
+                    producto.Stock += detalle.Unidades;
+                    _context.Productos.Update(producto);
+
+                    compra.DetalleCompras.Add(detalleCompra);
+
+                    // Agregar movimiento de stock
+                    movimientoStock.Add(new MovimientoStock
+                    {
+                        ProductoId = producto.Id,
+                        Cantidad = detalleCompra.Cantidad,
+                        TipoMovimiento = Movimiento.Entrada,
+                        FechaMovimiento = DateTime.Now,
+                        CompraId = compra.Id,
+                        UsuarioId = compra.UsuarioId
                     });
                 }
 
@@ -194,6 +236,9 @@ namespace InventoryFinal.Repository
 
                 // Guardar los cambios en la base de datos
                 _context.Compras.Update(compra);
+                _context.DetalleCompras.AddRange(compra.DetalleCompras);
+                _context.MovimientoStocks.AddRange(movimientoStock);
+
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)

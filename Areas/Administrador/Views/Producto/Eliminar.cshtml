@@ -1,63 +1,36 @@
 ﻿@model InventoryFinal.Models.Producto
 
-<h1>¿Esta seguro que quiere eliminar este Producto?</h1>
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            Descripción
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
-        <dt class = "col-sm-2">
-            Stock Mínimo
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StockMinimo)
-        </dd>
-        <dt class = "col-sm-2">
-            Categoría
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categoria.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Proveedor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Proveedor.Nombre)
-        </dd>
-    </dl>
-    
-    <form asp-action="Eliminar">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Cancelar</a>
-    </form>
-</div>
+<h2 class="mb-4 text-danger">¿Estás seguro de que deseas eliminar este producto?</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Nombre)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Nombre)</dd>
+
+    <dt class="col-sm-3">Descripción</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Descripcion)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Precio)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Precio)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Stock)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Stock)</dd>
+
+    <dt class="col-sm-3">Stock Mínimo</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.StockMinimo)</dd>
+
+    <dt class="col-sm-3">Categoría</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Categoria.Nombre)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Proveedor)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Proveedor.Nombre)</dd>
+</dl>
+
+<form asp-action="Eliminar">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-outline-secondary ms-2">Cancelar</a>
+</form>

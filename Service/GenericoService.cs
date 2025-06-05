@@ -80,8 +80,8 @@ namespace InventoryFinal.Service
                 return (true, $"{typeof(T).Name} eliminada correctamente.");
             }
 
-            EscribirFichero.Escribir($"{typeof(T).Name} no se ha podido eliminar.");
-            return (true, $"{typeof(T).Name} no se ha podido eliminar.");
+            EscribirFichero.Escribir($"{typeof(T).Name} no se ha podido eliminar porque tiene relaciones activas.");
+            return (false, $"{typeof(T).Name} no se ha podido eliminar porque tiene relaciones activas.");
         }
     }
 }

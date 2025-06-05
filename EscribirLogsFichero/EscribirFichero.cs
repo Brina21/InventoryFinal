@@ -9,7 +9,7 @@
         // Constructor que crea el directorio y el fichero si no existen
         public EscribirFichero()
         {
-            
+
 
             if (!Directory.Exists(directorio))
             {

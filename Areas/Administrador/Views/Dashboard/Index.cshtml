@@ -1,10 +1,79 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-5">¡Bienvenido, @ViewBag.NombreUsuario!</h1>
+        <p class="lead">Este es tu panel de administración para gestionar el inventario de tu tienda.</p>
+    </div>
 
-    <h2>Hola, @ViewBag.NombreUsuario!</h2>
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Productos</h5>
+                    <p class="card-text display-6">@ViewBag.TotalProductos</p>
+                    <a href="/Administrador/Producto" class="btn btn-primary btn-sm">Ver productos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Categorías</h5>
+                    <p class="card-text display-6">@ViewBag.TotalCategorias</p>
+                    <a href="/Administrador/Categoria" class="btn btn-primary btn-sm">Ver categorías</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text display-6">@ViewBag.TotalClientes</p>
+                    <a href="/Administrador/Cliente" class="btn btn-primary btn-sm">Ver clientes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h3>Movimientos del stock</h3>
+        <table class="table table-striped table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Tipo</th>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movimiento in (List<InventoryFinal.Models.MovimientoStock>)ViewBag.MovimientosStock)
+                {
+                    <tr>
+                        <td>@movimiento.Producto?.Nombre</td>
+                        <td>@movimiento.Cantidad</td>
+                        <td>
+                            @if (movimiento.TipoMovimiento == InventoryFinal.Models.Movimiento.Entrada)
+                            {
+                                <span class="badge bg-success">Entrada</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Salida</span>
+                            }
+                        </td>
+                        <td>@movimiento.FechaMovimiento.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@movimiento.Usuario?.Nombre</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
 </div>

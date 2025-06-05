@@ -11,13 +11,13 @@ namespace InventoryFinal.Models
 
         [Required]
         public required string Nombre { get; set; }
-        
+
         [Required]
         public required string Contacto { get; set; }
-        
+
         [Required]
         public required int Telefono { get; set; }
-        
+
         [Required]
         [EmailAddress]
         public required string Email { get; set; }

@@ -1,41 +1,24 @@
 ﻿@model InventoryFinal.Models.Cliente
 
 @{
-    ViewData["Title"] = "Detalles";
+    ViewData["Title"] = "Detalles del Cliente";
 }
 
-<h1>Detalles del Cliente</h1>
+<h2 class="mb-4">Detalles del Cliente</h2>
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            Teléfono
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class = "col-sm-2">
-            Fecha Creación
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCreacion)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Editar" asp-route-id="@Model?.Id">Editar</a> |
-    <a asp-action="Index">Volver a Lista</a>
-</div>
+<dl class="row">
+    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Email)</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Nombre)</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.Nombre)</dd>
+
+    <dt class="col-sm-4">Teléfono</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.Telefono)</dd>
+
+    <dt class="col-sm-4">Fecha Creación</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.FechaCreacion)</dd>
+</dl>
+
+<a asp-action="Editar" asp-route-id="@Model?.Id" class="btn btn-warning btn-sm">Editar</a>
+<a asp-action="Index" class="btn btn-outline-secondary btn-sm">Volver a Lista</a>

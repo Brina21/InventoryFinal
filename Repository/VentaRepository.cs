@@ -96,6 +96,11 @@ namespace InventoryFinal.Repository
                     DetalleVentas = new List<DetalleVenta>()
                 };
 
+                _context.Ventas.Add(venta);
+                await _context.SaveChangesAsync();
+
+                var movimientosStock = new List<MovimientoStock>();
+
                 foreach (var detalle in dto.DetalleVentas)
                 {
                     var detalleVenta = new DetalleVenta
@@ -107,23 +112,29 @@ namespace InventoryFinal.Repository
                         Total = detalle.SubTotal
                     };
 
+                    venta.DetalleVentas.Add(detalleVenta);
+
+                    var producto = _context.Productos.FirstOrDefault(p => p.Id == detalleVenta.ProductoId);
+                    producto.Stock -= detalleVenta.Cantidad;
+
                     // Agregar movimiento de stock
-                    var movimientoStock = new MovimientoStock
+                    movimientosStock.Add(new MovimientoStock
                     {
-                        ProductoId = detalleVenta.Id,
-                        Cantidad = -detalleVenta.Cantidad,
+                        ProductoId = (int)detalleVenta.ProductoId,
+                        Cantidad = detalleVenta.Cantidad,
                         TipoMovimiento = Movimiento.Salida,
                         FechaMovimiento = DateTime.Now,
                         VentaId = venta.Id,
                         UsuarioId = venta.UsuarioId
-                    };
+                    });
                 }
 
                 venta.CalcularTotal();
 
-                _context.Ventas.Add(venta);
-                await _context.SaveChangesAsync();
+                _context.DetalleVentas.AddRange(venta.DetalleVentas);
+                _context.MovimientoStocks.AddRange(movimientosStock);
 
+                await _context.SaveChangesAsync();
 
                 await transaction.CommitAsync();
                 return venta;
@@ -176,6 +187,8 @@ namespace InventoryFinal.Repository
                 // Eliminar los detalles existentes
                 _context.DetalleVentas.RemoveRange(venta.DetalleVentas);
 
+                var movimientoStock = new List<MovimientoStock>();
+
                 // Agregar los nuevos detalles
                 foreach (var detalle in dto.DetalleVentas)
                 {
@@ -186,11 +199,25 @@ namespace InventoryFinal.Repository
                         PrecioUnitario = detalle.PrecioUnitario,
                         Total = detalle.SubTotal
                     };
+
+                    // Agregar movimiento de stock
+                    movimientoStock.Add(new MovimientoStock
+                    {
+                        ProductoId = (int)detalleVenta.ProductoId,
+                        Cantidad = detalleVenta.Cantidad,
+                        TipoMovimiento = Movimiento.Salida,
+                        FechaMovimiento = DateTime.Now,
+                        VentaId = venta.Id,
+                        UsuarioId = venta.UsuarioId
+                    });
                 }
 
                 venta.CalcularTotal();
 
                 _context.Ventas.Update(venta);
+                _context.DetalleVentas.AddRange(venta.DetalleVentas);
+                _context.MovimientoStocks.AddRange(movimientoStock);
+
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)

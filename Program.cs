@@ -3,8 +3,8 @@ using InventoryFinal.Models;
 using InventoryFinal.Repository;
 using InventoryFinal.Service;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
 using Newtonsoft.Json;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +30,8 @@ builder.Services.AddScoped<VentaRepository>();
 builder.Services.AddScoped<VentaService>();
 
 builder.Services.AddScoped<GenericoService<Cliente>>();
+
+builder.Services.AddScoped<GenericoService<MovimientoStock>>();
 
 // Configuración de sesión
 builder.Services.AddDistributedMemoryCache();

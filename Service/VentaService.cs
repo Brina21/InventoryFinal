@@ -2,7 +2,6 @@
 using InventoryFinal.EscribirLogsFichero;
 using InventoryFinal.Models;
 using InventoryFinal.Repository;
-using Microsoft.IdentityModel.Tokens;
 
 namespace InventoryFinal.Service
 {

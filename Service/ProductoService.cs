@@ -1,5 +1,4 @@
-﻿using InventoryFinal.Data;
-using InventoryFinal.EscribirLogsFichero;
+﻿using InventoryFinal.EscribirLogsFichero;
 using InventoryFinal.Models;
 using InventoryFinal.Repository;
 using Microsoft.IdentityModel.Tokens;

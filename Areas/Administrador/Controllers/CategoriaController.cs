@@ -59,7 +59,7 @@ namespace InventoryFinal.Controllers
                 // Recarga la vista mostrando el error
                 return View("Crear", categoria);
             }
-            
+
             var (exito, mensaje, nuevaCategoria) = await genericoService.Crear(categoria);
 
             if (!exito)
@@ -68,7 +68,7 @@ namespace InventoryFinal.Controllers
                 return View("Crear", categoria);
             }
 
-            return View("Detalles", new { id = nuevaCategoria.Id });
+            return RedirectToAction("Detalles", new { id = nuevaCategoria.Id });
         }
 
         [HttpGet]
@@ -86,7 +86,7 @@ namespace InventoryFinal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Editar (int id, Categoria categoria)
+        public async Task<IActionResult> Editar(int id, Categoria categoria)
         {
             if (id != categoria.Id)
             {
@@ -107,7 +107,7 @@ namespace InventoryFinal.Controllers
                 return View("Editar", categoria);
             }
 
-            return RedirectToAction("Detalles", new { id = categoria.Id});
+            return RedirectToAction("Detalles", new { id = categoria.Id });
         }
 
         [HttpGet]
@@ -123,16 +123,16 @@ namespace InventoryFinal.Controllers
             return View("Eliminar", categoria);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
             var (exito, mensaje) = await genericoService.Eliminar(id);
 
             if (!exito)
-            {
                 TempData["Error"] = mensaje;
-            }
+            else
+                TempData["Exito"] = mensaje;
 
             return RedirectToAction("Index");
         }

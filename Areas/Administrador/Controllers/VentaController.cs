@@ -2,7 +2,6 @@
 using InventoryFinal.Models;
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InventoryFinal.Controllers
 {
@@ -160,17 +159,17 @@ namespace InventoryFinal.Controllers
             {
                 var (exitoProductos, mensajeProductos, productos) = await productoService.ObtenerTodosProductos();
                 var (exitoClientes, mensajeClientes, clientes) = await clienteService.ObtenerTodos();
-                
+
                 ViewBag.Productos = productos;
                 ViewBag.Clientes = clientes;
-             
+
                 return View("Editar", venta);
             }
 
             var usuario = HttpContext.Session.GetString("NombreUsuario");
             venta.NombreUsuario = usuario;
 
-            if(venta.DetalleVentas != null && venta.DetalleVentas.Count > 0)
+            if (venta.DetalleVentas != null && venta.DetalleVentas.Count > 0)
             {
                 foreach (var detalle in venta.DetalleVentas)
                 {

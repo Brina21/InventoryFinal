@@ -66,7 +66,7 @@ namespace InventoryFinal.Controllers
                 return View("Crear", cliente);
             }
 
-            return View("Detalles", new { id = nuevoCliente.Id });
+            return RedirectToAction("Detalles", new { id = nuevoCliente.Id });
         }
 
         [HttpGet]
@@ -121,16 +121,16 @@ namespace InventoryFinal.Controllers
             return View("Eliminar", cliente);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
             var (exito, mensaje) = await genericoService.Eliminar(id);
 
             if (!exito)
-            {
                 TempData["Error"] = mensaje;
-            }
+            else
+                TempData["Exito"] = mensaje;
 
             return RedirectToAction("Index");
         }

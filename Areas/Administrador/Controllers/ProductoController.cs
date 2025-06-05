@@ -2,7 +2,6 @@
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Threading.Tasks;
 
 namespace InventoryFinal.Controllers
 {
@@ -173,16 +172,16 @@ namespace InventoryFinal.Controllers
             return View("Eliminar", producto);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
             var (exito, mensaje) = await genericoService.Eliminar(id);
 
             if (!exito)
-            {
                 TempData["Error"] = mensaje;
-            }
+            else
+                TempData["Exito"] = mensaje;
 
             return RedirectToAction("Index");
         }

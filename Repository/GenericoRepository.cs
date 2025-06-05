@@ -21,6 +21,7 @@ namespace InventoryFinal.Repository
             try
             {
                 EntityEntry<T> resultado = await Entidades.AddAsync(entity);
+                await _context.SaveChangesAsync();
                 return resultado.Entity;
             }
             catch (Exception ex)
@@ -69,7 +70,7 @@ namespace InventoryFinal.Repository
             {
                 EscribirFichero.Escribir("Error al actualizar la entidad de la BD: " + ex.Message);
                 return false;
-                
+
                 throw;
             }
         }
@@ -78,17 +79,21 @@ namespace InventoryFinal.Repository
         {
             try
             {
-                var entidad = Entidades.Find(id);
+                var entidad = await Entidades.FindAsync(id); // <-- usa await
 
                 if (entidad != null)
                 {
                     Entidades.Remove(entidad);
-
                     await _context.SaveChangesAsync();
-
                     return true;
                 }
 
+                return false;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                // Log personalizado de error de FK
+                EscribirFichero.Escribir($"Error al borrar: {typeof(T).Name} tiene relaciones activas. Detalles: {dbEx.Message}");
                 return false;
             }
             catch (Exception ex)

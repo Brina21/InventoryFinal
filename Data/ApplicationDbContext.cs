@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using InventoryFinal.Models;
-using InventoryFinal.DTO;
+﻿using InventoryFinal.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace InventoryFinal.Data
 {

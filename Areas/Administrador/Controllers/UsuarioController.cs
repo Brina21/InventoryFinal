@@ -1,6 +1,7 @@
 ﻿using InventoryFinal.Models;
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InventoryFinal.Controllers
 {
@@ -46,8 +47,18 @@ namespace InventoryFinal.Controllers
         [HttpGet]
         public IActionResult Crear()
         {
+            ViewBag.Cargos = Enum.GetValues(typeof(Cargo))
+                                 .Cast<Cargo>()
+                                 .Select(c => new SelectListItem
+                                 {
+                                     Text = c.ToString(),
+                                     Value = c.ToString(),
+                                     Selected = c == Cargo.Empleado // Por defecto, seleccionar Empleado
+                                 }).ToList();
+
             return View();
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -55,6 +66,14 @@ namespace InventoryFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Cargos = Enum.GetValues(typeof(Cargo))
+                                     .Cast<Cargo>()
+                                     .Select(c => new SelectListItem
+                                     {
+                                         Text = c.ToString(),
+                                         Value = c.ToString()
+                                     }).ToList();
+
                 return View("Crear", usuario);
             }
 
@@ -63,12 +82,18 @@ namespace InventoryFinal.Controllers
 
             if (!exito)
             {
+                ViewBag.Cargos = Enum.GetValues(typeof(Cargo))
+                                     .Cast<Cargo>()
+                                     .Select(c => new SelectListItem
+                                     {
+                                         Text = c.ToString(),
+                                         Value = c.ToString()
+                                     }).ToList();
+
                 ModelState.AddModelError("", mensaje);
-                // Recargar vista con mensaje de error
                 return View("Crear", usuario);
             }
 
-            // Redirigir a detalles del nuevo usuario
             return RedirectToAction("Detalles", new { id = nuevoUsuario.Id });
         }
 
@@ -81,6 +106,14 @@ namespace InventoryFinal.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Cargos = Enum.GetValues(typeof(Cargo))
+                                 .Cast<Cargo>()
+                                 .Select(c => new SelectListItem
+                                 {
+                                     Text = c.ToString(),
+                                     Value = c.ToString()
+                                 }).ToList();
 
             return View("Editar", usuario);
         }
@@ -96,6 +129,14 @@ namespace InventoryFinal.Controllers
 
             if (!ModelState.IsValid)
             {
+                ViewBag.Cargos = Enum.GetValues(typeof(Cargo))
+                                     .Cast<Cargo>()
+                                     .Select(c => new SelectListItem
+                                     {
+                                         Text = c.ToString(),
+                                         Value = c.ToString()
+                                     }).ToList();
+
                 return View("Editar", usuario);
             }
 
@@ -103,8 +144,15 @@ namespace InventoryFinal.Controllers
 
             if (!exito)
             {
+                ViewBag.Cargos = Enum.GetValues(typeof(Cargo))
+                                     .Cast<Cargo>()
+                                     .Select(c => new SelectListItem
+                                     {
+                                         Text = c.ToString(),
+                                         Value = c.ToString()
+                                     }).ToList();
+
                 ModelState.AddModelError("", mensaje);
-                // Mantener en la vista de edición
                 return View("Editar", usuario);
             }
 
@@ -124,21 +172,21 @@ namespace InventoryFinal.Controllers
             return View("Eliminar", usuario);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {
             var (exito, mensaje) = await genericoService.Eliminar(id);
 
             if (!exito)
-            {
                 TempData["Error"] = mensaje;
-            }
+            else
+                TempData["Exito"] = mensaje;
 
             return RedirectToAction("Index");
         }
 
-        
+
         // GET: Usuario/Login
         [HttpGet]
         public IActionResult Login()

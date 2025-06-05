@@ -121,7 +121,7 @@ namespace InventoryFinal.Controllers
             return View("Eliminar", movimientoStock);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarConfirmado(int id)
         {

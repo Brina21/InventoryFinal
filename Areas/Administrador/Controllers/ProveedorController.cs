@@ -121,16 +121,16 @@ namespace InventoryFinal.Controllers
             return View("Eliminar", proveedor);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ELiminarConfirmado(int id)
+        public async Task<IActionResult> EliminarConfirmado(int id)
         {
             var (exito, mensaje) = await genericoService.Eliminar(id);
 
             if (!exito)
-            {
                 TempData["Error"] = mensaje;
-            }
+            else
+                TempData["Exito"] = mensaje;
 
             return RedirectToAction("Index");
         }

@@ -1,9 +1,7 @@
-﻿using InventoryFinal.Data;
-using InventoryFinal.DTO;
+﻿using InventoryFinal.DTO;
 using InventoryFinal.EscribirLogsFichero;
 using InventoryFinal.Models;
 using InventoryFinal.Repository;
-using Microsoft.EntityFrameworkCore;
 
 namespace InventoryFinal.Service
 {

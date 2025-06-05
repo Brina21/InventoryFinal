@@ -1,13 +1,60 @@
 ﻿@{
     Layout = "_LayoutInicio";
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Bienvenido a Inven-tory";
 }
 
-<div class="text-center mt-5">
-    <h1 class="display-4">Bienvenido a Inven-tory</h1>
-    <p class="lead">Por favor, inicia sesión o regístrate para continuar.</p>
+<div class="container mt-5">
+    <div class="text-center mt-5">
+        <img src="~/projectImages/icono.png" alt="Logo Inven-Tory" style="max-width: 200px; height: auto; margin-bottom: 10px;" />
+        <h1 class="display-4">Bienvenido a Inven-tory</h1>
+        <p class="lead">Por favor, inicia sesión o regístrate para continuar.</p>
 
-    <a href="@Url.Action("Login", "Home")" class="btn btn-primary m-2">Iniciar sesión</a>
-    <br />
-    <a href="@Url.Action("Register", "Home")" class="btn btn-outline-secondary m-2">Registrarse</a>
+        <a href="@Url.Action("Login", "Home")" class="btn btn-primary m-2">Iniciar sesión</a>
+        <br />
+        <a href="@Url.Action("Register", "Home")" class="btn btn-outline-secondary m-2">Registrarse</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <i class="bi bi-tags display-4 text-primary mb-3"></i>
+            <h5>Gestión de categorías</h5>
+            <p>Clasifica tus productos para encontrar lo que necesitas al instante.</p>
+        </div>
+        <div class="col-md-3 mb-3">
+            <i class="bi bi-box-seam display-4 text-primary mb-3"></i>
+            <h5>Control de productos</h5>
+            <p>Mantén tu catálogo de productos actualizado y organizado fácilmente.</p>
+        </div>
+        <div class="col-md-3 mb-3">
+            <i class="bi bi-cart-check display-4 text-primary mb-3"></i>
+            <h5>Compras</h5>
+            <p>Gestiona tus órdenes de compra y stock de forma sencilla.</p>
+        </div>
+        <div class="col-md-3 mb-3">
+            <i class="bi bi-cash-stack display-4 text-primary mb-3"></i>
+            <h5>Ventas</h5>
+            <p>Controla tus ventas y genera facturas rápidamente.</p>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <i class="bi bi-people display-4 text-primary mb-3"></i>
+            <h5>Control de clientes</h5>
+            <p>Administra tu base de clientes y mejora tu relación con ellos.</p>
+        </div>
+        <div class="col-md-3 mb-3">
+            <i class="bi bi-truck display-4 text-primary mb-3"></i>
+            <h5>Proveedores</h5>
+            <p>Gestiona tus proveedores y órdenes de suministro fácilmente.</p>
+        </div>
+        <div class="col-md-3 mb-3">
+            <i class="bi bi-person-badge display-4 text-primary mb-3"></i>
+            <h5>Usuarios</h5>
+            <p>Administra usuarios y sus roles para controlar accesos.</p>
+        </div>
+    </div>
+
+
+    <footer class="text-center mt-5">
+        <p class="text-muted">&copy; 2025 Inven-tory. La forma inteligente de gestionar tu inventario. <br/> Por Sabrine Bouragba Anhari 2ºK</p>
+    </footer>
 </div>
