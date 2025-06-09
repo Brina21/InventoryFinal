@@ -1,0 +1,189 @@
+﻿@using InventoryFinal.DTO
+@using InventoryFinal.Models
+@using Newtonsoft.Json
+@model CompraConDetallesDTO
+@{
+    ViewBag.Title = "Editar Compra";
+    var productos = ViewBag.Productos as List<Producto> ?? new List<Producto>();
+    var clientes = ViewBag.Clientes as List<Cliente> ?? new List<Cliente>();
+
+    var settings = new JsonSerializerSettings
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+    };
+}
+
+<h2>Editar Compra</h2>
+
+<form asp-action="Editar" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Usuario</label>
+        <input type="text" value="@Model.NombreUsuario" readonly class="form-control" />
+    </div>
+
+    <div>
+        <label>Fecha</label>
+        <input type="text" value="@Model.FechaCompra.ToString("dd-MM-yyyy HH:mm")" readonly class="form-control" />
+    </div>
+
+    <div>
+        <label>Cliente</label>
+        <select asp-for="NombreCliente" class="form-control">
+            <option value="">-- Sin Cliente --</option>
+            @foreach (var cliente in clientes)
+            {
+                <option value="@cliente.Nombre">
+                    @cliente.Nombre
+                </option>
+            }
+        </select>
+    </div>
+
+    <hr />
+    <table class="table" id="tabla-detalles">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Unidades</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="detalles-cuerpo">
+            
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" onclick="agregarProducto()">Agregar producto</button>
+
+    <hr />
+    <div>
+        <label>Total:</label>
+        <input type="text" id="totalCompra" name="TotalCompra" readonly class="form-control" value="@Model.Total" />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <script>
+        const productos = @Html.Raw(JsonConvert.SerializeObject(productos, settings));
+        let index = 0;
+        let productosSeleccionados = [];
+
+        function agregarProducto(nombre = "", cantidad = 1, precio = 0) {
+            const tbody = document.getElementById("detalles-cuerpo");
+
+            const tr = document.createElement("tr");
+            tr.id = `producto-${index}`;
+            tr.classList.add("producto-item");
+            tr.innerHTML = `
+                <td>
+                    <select name="DetalleCompras[${index}].NombreProducto" class="form-control" onchange="actualizarPrecio(${index})">
+                        ${productos.map(p => `<option value="${p.Nombre}" data-stock="${p.Stock}" ${p.Nombre === nombre ? 'selected' : ''}>
+                            ${p.Nombre} (Stock: ${p.Stock})
+                        </option>`).join("")}
+                    </select>
+                </td>
+                <td>
+                    <input name="DetalleCompras[${index}].Unidades" type="number" class="form-control" value="${cantidad}" min="1" onchange="calcularSubtotal(${index})"/>
+                </td>
+                <td>
+                    <input name="DetalleCompras[${index}].PrecioUnitario" type="number" readonly class="form-control" value="${precio}" onchange="calcularSubtotal(${index})"/>
+                </td>
+                <td>
+                    <input type="text" id="subtotal-${index}" readonly class="form-control"/>
+                </td>
+                <td class="col-md-2 d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" onclick="eliminarProducto(this)">Eliminar</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+            calcularTotal();
+            actualizarPrecio(index);
+            index++;
+
+            productosSeleccionados.push({
+                Nombre: nombre,
+                Cantidad: cantidad,
+                Precio: precio
+            });
+        }
+
+        function actualizarPrecio(i) {
+            const productoSelect = document.querySelector(`[name='DetalleCompras[${i}].NombreProducto']`);
+            const precioInput = document.querySelector(`[name='DetalleCompras[${i}].PrecioUnitario']`);
+            const producto = productos.find(p => p.Nombre === productoSelect.value);
+            if (producto) {
+                precioInput.value = producto.Precio;
+                calcularSubtotal(i);
+            }
+        }
+
+        function calcularSubtotal(i) {
+            const unidades = parseFloat(document.querySelector(`[name='DetalleCompras[${i}].Unidades']`).value) || 0;
+            const precio = parseFloat(document.querySelector(`[name='DetalleCompras[${i}].PrecioUnitario']`).value) || 0;
+            const subtotal = unidades * precio;
+            document.getElementById(`subtotal-${i}`).value = subtotal.toFixed(2);
+            calcularTotal();
+        }
+
+        function calcularTotal() {
+            let total = 0;
+            document.querySelectorAll("input[id^='subtotal-']").forEach(input => {
+                total += parseFloat(input.value) || 0;
+            });
+            document.getElementById("totalCompra").value = total.toFixed(2);
+        }
+
+        function eliminarProducto(boton) {
+            const fila = boton.closest('tr');
+            if (fila) {
+                fila.remove();
+                reindexarProductos();
+                calcularTotal();
+            }
+        }
+
+        function reindexarProductos() {
+            const items = document.querySelectorAll('.producto-item');
+            index = 0; // Reiniciamos índice
+            items.forEach((item, i) => {
+                item.setAttribute('data-index', i);
+                item.querySelectorAll('select, input').forEach(input => {
+                    if (input.name.includes("NombreProducto")) {
+                        input.name = `DetalleCompras[${i}].NombreProducto`;
+                        input.setAttribute("onchange", `actualizarPrecio(${i})`);
+                    }
+                    if (input.name.includes("Unidades")) {
+                        input.name = `DetalleCompras[${i}].Unidades`;
+                        input.setAttribute("onchange", `calcularSubtotal(${i})`);
+                    }
+                    if (input.name.includes("PrecioUnitario")) {
+                        input.name = `DetalleCompras[${i}].PrecioUnitario`;
+                        input.setAttribute("onchange", `calcularSubtotal(${i})`);
+                    }
+                    if (input.id.includes("subtotal-")) {
+                        input.id = `subtotal-${i}`;
+                    }
+                });
+                index++;
+            });
+        }
+
+
+        @foreach (var detalle in Model.DetalleCompras)
+        {
+            /* @Html.Raw() evita que Razor escape los caracteres especiales,
+            * permitiendo que los valores se pasen al HTML sin modificaciones.
+            */
+            <text>
+                agregarProducto("@Html.Raw(detalle.NombreProducto)", @detalle.Unidades, @detalle.PrecioUnitario);
+            </text>
+        }
+
+    </script>
+}

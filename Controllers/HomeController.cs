@@ -99,5 +99,11 @@ namespace InventoryFinal.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Dashboard", new { area = "Administrador" });
         }
+
+        public IActionResult AccesoDenegado()
+        {
+            return View();
+        }
+
     }
 }

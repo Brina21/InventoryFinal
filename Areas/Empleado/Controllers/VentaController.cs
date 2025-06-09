@@ -3,9 +3,9 @@ using InventoryFinal.Models;
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace InventoryFinal.Areas.Administrador.Controllers
+namespace InventoryFinal.Areas.Empleado.Controllers
 {
-    [Area("Administrador")]
+    [Area("Empleado")]
     public class VentaController : Controller
     {
         private readonly VentaService ventaService;

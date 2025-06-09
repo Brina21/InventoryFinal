@@ -1,0 +1,24 @@
+﻿@model InventoryFinal.Models.Cliente
+
+@{
+    ViewData["Title"] = "Detalles del Cliente";
+}
+
+<h2 class="mb-4">Detalles del Cliente</h2>
+
+<dl class="row">
+    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Email)</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Nombre)</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.Nombre)</dd>
+
+    <dt class="col-sm-4">Teléfono</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.Telefono)</dd>
+
+    <dt class="col-sm-4">Fecha Creación</dt>
+    <dd class="col-sm-8">@Html.DisplayFor(model => model.FechaCreacion)</dd>
+</dl>
+
+<a asp-action="Editar" asp-route-id="@Model?.Id" class="btn btn-warning btn-sm">Editar</a>
+<a asp-action="Index" class="btn btn-outline-secondary btn-sm">Volver a Lista</a>

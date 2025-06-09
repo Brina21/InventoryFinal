@@ -26,6 +26,12 @@ namespace InventoryFinal.Areas.Administrador.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var rol = HttpContext.Session.GetString("Rol");
+            if (rol != "Administrador")
+            {
+                return RedirectToAction("AccesoDenegado", "Home", new { area = "" });
+            }
+
             ViewBag.NombreUsuario = HttpContext.Session.GetString("NombreUsuario");
 
             var productos = await productoService.ObtenerTodos();

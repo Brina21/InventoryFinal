@@ -1,0 +1,42 @@
+﻿@model IEnumerable<InventoryFinal.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorías";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success">@TempData["Exito"]</div>
+}
+
+
+<h2 class="mb-4">Lista de Categorías</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Detalles" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalles</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Crear" class="btn btn-success mb-3">Nueva Categoría</a>

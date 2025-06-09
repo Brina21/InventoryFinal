@@ -1,0 +1,33 @@
+﻿@model InventoryFinal.Models.Producto
+
+@{
+    ViewData["Title"] = "Detalles Producto";
+}
+
+<h2 class="mb-4">Detalles del Producto</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Nombre)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Nombre)</dd>
+
+    <dt class="col-sm-3">Descripción</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Descripcion)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Precio)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Precio)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Stock)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Stock)</dd>
+
+    <dt class="col-sm-3">Stock Mínimo</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.StockMinimo)</dd>
+
+    <dt class="col-sm-3">Categoría</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Categoria.Nombre)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Proveedor)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(m => m.Proveedor.Nombre)</dd>
+</dl>
+
+<a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-warning me-2">Editar</a>
+<a asp-action="Index" class="btn btn-outline-secondary">Volver a Lista</a>

@@ -2,9 +2,9 @@
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace InventoryFinal.Areas.Administrador.Controllers
+namespace InventoryFinal.Areas.Empleado.Controllers
 {
-    [Area("Administrador")]
+    [Area("Empleado")]
     public class ProveedorController : Controller
     {
         private readonly GenericoService<Proveedor> genericoService;
@@ -106,33 +106,6 @@ namespace InventoryFinal.Areas.Administrador.Controllers
             }
 
             return RedirectToAction("Detalles", new { id = proveedor.Id });
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Eliminar(int id)
-        {
-            var (exito, mensaje, proveedor) = await genericoService.ObtenerPorId(id);
-
-            if (!exito)
-            {
-                return NotFound();
-            }
-
-            return View("Eliminar", proveedor);
-        }
-
-        [HttpPost, ActionName("Eliminar")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EliminarConfirmado(int id)
-        {
-            var (exito, mensaje) = await genericoService.Eliminar(id);
-
-            if (!exito)
-                TempData["Error"] = mensaje;
-            else
-                TempData["Exito"] = mensaje;
-
-            return RedirectToAction("Index");
         }
     }
 }

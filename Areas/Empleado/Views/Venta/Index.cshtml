@@ -1,0 +1,31 @@
+﻿@using InventoryFinal.DTO
+@model List<VentaConDetallesDTO>
+
+<h2>Ventas</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Usuario</th>
+            <th>Cliente</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venta in Model)
+        {
+            <tr>
+                <td>@venta.FechaVenta.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@venta.Total €</td>
+                <td>@venta.NombreUsuario</td>
+                <td>@(string.IsNullOrEmpty(venta.NombreCliente) ? "Sin cliente" : venta.NombreCliente)</td>
+                <td>
+                    <a asp-action="Detalles" asp-route-id="@venta.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Editar" asp-route-id="@venta.Id" class="btn btn-warning btn-sm">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Crear" class="btn btn-success mb-3">Nueva Venta</a>

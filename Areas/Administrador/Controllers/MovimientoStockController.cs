@@ -2,7 +2,7 @@
 using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace InventoryFinal.Controllers
+namespace InventoryFinal.Areas.Administrador.Controllers
 {
     [Area("Administrador")]
     public class MovimientoStockController : Controller

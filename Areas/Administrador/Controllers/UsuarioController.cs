@@ -3,7 +3,7 @@ using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace InventoryFinal.Controllers
+namespace InventoryFinal.Areas.Administrador.Controllers
 {
     [Area("Administrador")]
     public class UsuarioController : Controller

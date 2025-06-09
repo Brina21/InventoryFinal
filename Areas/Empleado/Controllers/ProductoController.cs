@@ -3,9 +3,9 @@ using InventoryFinal.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace InventoryFinal.Areas.Administrador.Controllers
+namespace InventoryFinal.Areas.Empleado.Controllers
 {
-    [Area("Administrador")]
+    [Area("Empleado")]
     public class ProductoController : Controller
     {
         private readonly GenericoService<Producto> genericoService;
@@ -157,33 +157,6 @@ namespace InventoryFinal.Areas.Administrador.Controllers
             }
 
             return RedirectToAction("Detalles", new { id = producto.Id });
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Eliminar(int id)
-        {
-            var (exito, mensaje, producto) = await productoService.ObtenerProductoPorId(id);
-
-            if (!exito)
-            {
-                return NotFound();
-            }
-
-            return View("Eliminar", producto);
-        }
-
-        [HttpPost, ActionName("Eliminar")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EliminarConfirmado(int id)
-        {
-            var (exito, mensaje) = await genericoService.Eliminar(id);
-
-            if (!exito)
-                TempData["Error"] = mensaje;
-            else
-                TempData["Exito"] = mensaje;
-
-            return RedirectToAction("Index");
         }
     }
 }
